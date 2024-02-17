@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+
+# Macro Begin: /home/chaz/unofficial_documents/3D_printing_and_designs/3D_modeling/PrepForPrint.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+import FreeCAD
+import Mesh
+import MeshPartGui, FreeCADGui
+import MeshPart
+
+FreeCADGui.runCommand('MeshPart_Mesher')
+
+__doc__=FreeCAD.getDocument("_0mmPed2")
+__mesh__=__doc__.addObject("Mesh::Feature","Mesh")
+__mesh__.Mesh=Mesh.Mesh(__doc__.getObject("Fillet").Shape.tessellate(0.05))
+__mesh__.Label="Fillet (Meshed)"
+__mesh__.ViewObject.CreaseAngle=25.0
+del __doc__, __mesh__
+
+# Macro End: /home/chaz/unofficial_documents/3D_printing_and_designs/3D_modeling/PrepForPrint.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++

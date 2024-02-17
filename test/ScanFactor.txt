@@ -1,0 +1,4 @@
+When scanning on scanner and importing into LibreCad, the conversion factor is 1537 LibreCad units to 130 real-world mm. 
+
+Factor = 0.08458 or 11.823
+
