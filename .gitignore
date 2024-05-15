@@ -1,3 +1,5 @@
-*.git
+*.*.git
+Firmware/Marlin2
 
 Downloaded_models/BeltDrivenEnder3/
+
