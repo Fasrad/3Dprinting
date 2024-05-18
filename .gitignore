@@ -1,6 +1,6 @@
 *.*.git
-Firmware/Marlin2
-
+Firmware/Marlin2/Marlin/.git
 Downloaded_models/BeltDrivenEnder3/
+Firmware/Configurations
 Firmware/Configurations
 
