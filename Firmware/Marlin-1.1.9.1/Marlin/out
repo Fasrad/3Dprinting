@@ -1,2310 +1,0 @@
-
-
-2024-04-01 23:07                                                  Page 1
-
-
-/**				    /**
- * Marlin 3D Printer Firmware	     * Marlin 3D Printer Firmware
- * Copyright (C) 2016 MarlinFirmwar  * Copyright (C) 2016 MarlinFirmwar
- *				     *
- * Based on Sprinter and grbl.	     * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbel  * Copyright (C) 2011 Camiel Gubbel
- *				     *
- * This program is free software: y  * This program is free software: y
- * it under the terms of the GNU Ge  * it under the terms of the GNU Ge
- * the Free Software Foundation, ei  * the Free Software Foundation, ei
- * (at your option) any later versi  * (at your option) any later versi
- *				     *
- * This program is distributed in t  * This program is distributed in t
- * but WITHOUT ANY WARRANTY; withou  * but WITHOUT ANY WARRANTY; withou
- * MERCHANTABILITY or FITNESS FOR A  * MERCHANTABILITY or FITNESS FOR A
- * GNU General Public License for m  * GNU General Public License for m
- *				     *
- * You should have received a copy   * You should have received a copy
- * along with this program.  If not  * along with this program.	 If not
- *				     *
- */				     */
-				    
-/**				    /**
- * Configuration.h		     * Configuration.h
- *				     *
- * Basic settings such as:	     * Basic settings such as:
- *				     *
- * - Type of electronics	     * - Type of electronics
- * - Type of temperature sensor	     * - Type of temperature sensor
- * - Printer geometry		     * - Printer geometry
- * - Endstop configuration	     * - Endstop configuration
- * - LCD controller		     * - LCD controller
- * - Extra features		     * - Extra features
- *				     *
- * Advanced settings can be found i  * Advanced settings can be found i
- *				     *
- */				     */
-#ifndef CONFIGURATION_H		    #ifndef CONFIGURATION_H
-#define CONFIGURATION_H		    #define CONFIGURATION_H
-#define CONFIGURATION_H_VERSION 010 #define CONFIGURATION_H_VERSION 010
-				    
-//================================= //=================================
-//============================= Get //============================= Get
-//================================= //=================================
-				    
-/**				    /**
- * Here are some standard links for  * Here are some standard links for
- *				     *
- * http://reprap.org/wiki/Calibrati  * http://reprap.org/wiki/Calibrati
- * http://youtu.be/wAL9d7FgInk	     * http://youtu.be/wAL9d7FgInk
- * http://calculator.josefprusa.cz   * http://calculator.josefprusa.cz
- * http://reprap.org/wiki/Triffid_H  * http://reprap.org/wiki/Triffid_H
- * http://www.thingiverse.com/thing  * http://www.thingiverse.com/thing
- * https://sites.google.com/site/re  * https://sites.google.com/site/re
- * http://www.thingiverse.com/thing  * http://www.thingiverse.com/thing
- */				     */
-
-
-
-
-
-
-
-2024-04-01 23:07                                                  Page 2
-
-
-				    
-//================================= //=================================
-//============================= DEL //============================= DEL
-//================================= //=================================
-// For a Delta printer start with o // For a Delta printer start with o
-// example_configurations/delta dir // example_configurations/delta dir
-//				    //
-				    
-//================================= //=================================
-//============================= SCA //============================= SCA
-//================================= //=================================
-// For a SCARA printer start with t // For a SCARA printer start with t
-// example_configurations/SCARA and // example_configurations/SCARA and
-//				    //
-				    
-//================================= //=================================
-//============================= HAN //============================= HAN
-//================================= //=================================
-// For a Hangprinter start with the // For a Hangprinter start with the
-// example_configurations/hangprint // example_configurations/hangprint
-//				    //
-				    
-// @section info		    // @section info
-				    
-// User-specified version info of t // User-specified version info of t
-// startup. Implementation of an id // startup. Implementation of an id
-// build by the user have been succ // build by the user have been succ
-#define STRING_CONFIG_H_AUTHOR "(Ea #define STRING_CONFIG_H_AUTHOR "(no
-//#define SHOW_BOOTSCREEN	    #define SHOW_BOOTSCREEN
-//#define STRING_SPLASH_LINE1 SHORT #define STRING_SPLASH_LINE1 SHORT_B
-//#define STRING_SPLASH_LINE2 WEBSI #define STRING_SPLASH_LINE2 WEBSITE
-				    
-/**				    /**
- * *** VENDORS PLEASE READ ***	     * *** VENDORS PLEASE READ ***
- *				     *
- * Marlin allows you to add a custo  * Marlin allows you to add a custo
- * With this option Marlin will fir  * With this option Marlin will fir
- * by the standard Marlin logo with  * by the standard Marlin logo with
- *				     *
- * We encourage you to take advanta  * We encourage you to take advanta
- * respectfully request that you re  * respectfully request that you re
- */				     */
-				    
-// Enable to show the bitmap in Mar // Enable to show the bitmap in Mar
-//#define SHOW_CUSTOM_BOOTSCREEN    //#define SHOW_CUSTOM_BOOTSCREEN
-				    
-// Enable to show the bitmap in Mar // Enable to show the bitmap in Mar
-//#define CUSTOM_STATUS_SCREEN_IMAG //#define CUSTOM_STATUS_SCREEN_IMAG
-				    
-// @section machine		    // @section machine
-				    
-/**				    /**
- * Select the serial port on the bo  * Select the serial port on the bo
- * This allows the connection of wi  * This allows the connection of wi
- * Serial port 0 is always used by   * Serial port 0 is always used by
- *				     *
-
-
-
-
-
-
-
-2024-04-01 23:07                                                  Page 3
-
-
- * :[0, 1, 2, 3, 4, 5, 6, 7]	     * :[0, 1, 2, 3, 4, 5, 6, 7]
- */				     */
-#define SERIAL_PORT 0		    #define SERIAL_PORT 0
-				    
-/**				    /**
- * This setting determines the comm  * This setting determines the comm
- *				     *
- * 250000 works in most cases, but   * 250000 works in most cases, but
- * you commonly experience drop-out  * you commonly experience drop-out
- * You may try up to 1000000 to spe  * You may try up to 1000000 to spe
- *				     *
- * :[2400, 9600, 19200, 38400, 5760  * :[2400, 9600, 19200, 38400, 5760
- */				     */
-#define BAUDRATE 250000		    #define BAUDRATE 250000
-				    
-// Enable the Bluetooth serial inte // Enable the Bluetooth serial inte
-//#define BLUETOOTH		    //#define BLUETOOTH
-				    
-// The following define selects whi // The following define selects whi
-// Please choose the name from boar // Please choose the name from boar
-#ifndef MOTHERBOARD		    #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_MKS_GEN   #define MOTHERBOARD BOARD_RAMPS_1
-#endif				    #endif
-				    
-// Optional custom name for your Re // Optional custom name for your Re
-// Displayed in the LCD "Ready" mes // Displayed in the LCD "Ready" mes
-//#define CUSTOM_MACHINE_NAME "3D P //#define CUSTOM_MACHINE_NAME "3D P
-				    
-// Define this to set a unique iden // Define this to set a unique iden
-// You can use an online service to // You can use an online service to
-//#define MACHINE_UUID "00000000-00 //#define MACHINE_UUID "00000000-00
-				    
-// @section extruder		    // @section extruder
-				    
-// This defines the number of extru // This defines the number of extru
-// :[1, 2, 3, 4, 5]		    // :[1, 2, 3, 4, 5]
-#define EXTRUDERS 1		    #define EXTRUDERS 1
-				    
-// Generally expected filament diam // Generally expected filament diam
-#define DEFAULT_NOMINAL_FILAMENT_DI #define DEFAULT_NOMINAL_FILAMENT_DI
-				    
-// For Cyclops or any "multi-extrud // For Cyclops or any "multi-extrud
-//#define SINGLENOZZLE		    //#define SINGLENOZZLE
-				    
-/**				    /**
- * Průša MK2 Single Nozzle Multi-Mate  * Průša MK2 Single Nozzle Multi-Mate
- *				     *
- * This device allows one stepper d  * This device allows one stepper d
- * two to eight stepper motors, one  * two to eight stepper motors, one
- * for extruders.		     * for extruders.
- *				     *
- * This option only allows the mult  * This option only allows the mult
- * Additional options to configure   * Additional options to configure
- */				     */
-//#define MK2_MULTIPLEXER	    //#define MK2_MULTIPLEXER
-#if ENABLED(MK2_MULTIPLEXER)	    #if ENABLED(MK2_MULTIPLEXER)
-
-
-
-
-
-
-
-2024-04-01 23:07                                                  Page 4
-
-
-  // Override the default DIO selec   // Override the default DIO selec
-  // Some pins files may provide de   // Some pins files may provide de
-  //#define E_MUX0_PIN 40  // Alway   //#define E_MUX0_PIN 40  // Alway
-  //#define E_MUX1_PIN 42  // Neede   //#define E_MUX1_PIN 42  // Neede
-  //#define E_MUX2_PIN 44  // Neede   //#define E_MUX2_PIN 44  // Neede
-#endif				    #endif
-				    
-// A dual extruder that uses a sing // A dual extruder that uses a sing
-//#define SWITCHING_EXTRUDER	    //#define SWITCHING_EXTRUDER
-#if ENABLED(SWITCHING_EXTRUDER)	    #if ENABLED(SWITCHING_EXTRUDER)
-  #define SWITCHING_EXTRUDER_SERVO_   #define SWITCHING_EXTRUDER_SERVO_
-  #define SWITCHING_EXTRUDER_SERVO_   #define SWITCHING_EXTRUDER_SERVO_
-  #if EXTRUDERS > 3		      #if EXTRUDERS > 3
-    #define SWITCHING_EXTRUDER_E23_ 	#define SWITCHING_EXTRUDER_E23_
-  #endif			      #endif
-#endif				    #endif
-				    
-// A dual-nozzle that uses a servom // A dual-nozzle that uses a servom
-//#define SWITCHING_NOZZLE	    //#define SWITCHING_NOZZLE
-#if ENABLED(SWITCHING_NOZZLE)	    #if ENABLED(SWITCHING_NOZZLE)
-  #define SWITCHING_NOZZLE_SERVO_NR   #define SWITCHING_NOZZLE_SERVO_NR
-  #define SWITCHING_NOZZLE_SERVO_AN   #define SWITCHING_NOZZLE_SERVO_AN
-  //#define HOTEND_OFFSET_Z { 0.0,    //#define HOTEND_OFFSET_Z { 0.0,
-#endif				    #endif
-				    
-/**				    /**
- * Two separate X-carriages with ex  * Two separate X-carriages with ex
- * via a magnetic docking mechanism  * via a magnetic docking mechanism
- */				     */
-//#define PARKING_EXTRUDER	    //#define PARKING_EXTRUDER
-#if ENABLED(PARKING_EXTRUDER)	    #if ENABLED(PARKING_EXTRUDER)
-  #define PARKING_EXTRUDER_SOLENOID   #define PARKING_EXTRUDER_SOLENOID
-  #define PARKING_EXTRUDER_SOLENOID   #define PARKING_EXTRUDER_SOLENOID
-  #define PARKING_EXTRUDER_SOLENOID   #define PARKING_EXTRUDER_SOLENOID
-  #define PARKING_EXTRUDER_PARKING_   #define PARKING_EXTRUDER_PARKING_
-  #define PARKING_EXTRUDER_GRAB_DIS   #define PARKING_EXTRUDER_GRAB_DIS
-  #define PARKING_EXTRUDER_SECURITY   #define PARKING_EXTRUDER_SECURITY
-  #define HOTEND_OFFSET_Z { 0.0, 1.   #define HOTEND_OFFSET_Z { 0.0, 1.
-#endif				    #endif
-				    
-/**				    /**
- * "Mixing Extruder"		     * "Mixing Extruder"
- *   - Adds G-codes M163 and M164 t  *	 - Adds G-codes M163 and M164 t
- *   - Extends the stepping routine  *	 - Extends the stepping routine
- *   - Optional support for Repetie  *	 - Optional support for Repetie
- *   - This implementation supports  *	 - This implementation supports
- *   - Enable DIRECT_MIXING_IN_G1 f  *	 - Enable DIRECT_MIXING_IN_G1 f
- */				     */
-//#define MIXING_EXTRUDER	    //#define MIXING_EXTRUDER
-#if ENABLED(MIXING_EXTRUDER)	    #if ENABLED(MIXING_EXTRUDER)
-  #define MIXING_STEPPERS 2	      #define MIXING_STEPPERS 2
-  #define MIXING_VIRTUAL_TOOLS 16     #define MIXING_VIRTUAL_TOOLS 16
-  //#define DIRECT_MIXING_IN_G1	      //#define DIRECT_MIXING_IN_G1
-#endif				    #endif
-				    
-// Offset of the extruders (uncomme // Offset of the extruders (uncomme
-
-
-
-
-
-
-
-2024-04-01 23:07                                                  Page 5
-
-
-// The offset has to be X=0, Y=0 fo // The offset has to be X=0, Y=0 fo
-// For the other hotends it is thei // For the other hotends it is thei
-//#define HOTEND_OFFSET_X {0.0, 20. //#define HOTEND_OFFSET_X {0.0, 20.
-//#define HOTEND_OFFSET_Y {0.0, 5.0 //#define HOTEND_OFFSET_Y {0.0, 5.0
-				    
-// @section machine		    // @section machine
-				    
-/**				    /**
- * Select your power supply here. U  * Select your power supply here. U
- *				     *
- * 0 = No Power Switch		     * 0 = No Power Switch
- * 1 = ATX			     * 1 = ATX
- * 2 = X-Box 360 203Watts (the blue  * 2 = X-Box 360 203Watts (the blue
- *				     *
- * :{ 0:'No power switch', 1:'ATX',  * :{ 0:'No power switch', 1:'ATX',
- */				     */
-#define POWER_SUPPLY 0		    #define POWER_SUPPLY 0
-				    
-#if POWER_SUPPLY > 0		    #if POWER_SUPPLY > 0
-  // Enable this option to leave th   // Enable this option to leave th
-  // Power to steppers and heaters    // Power to steppers and heaters
-  //#define PS_DEFAULT_OFF	      //#define PS_DEFAULT_OFF
-				    
-  //#define AUTO_POWER_CONTROL	      //#define AUTO_POWER_CONTROL
-  #if ENABLED(AUTO_POWER_CONTROL)     #if ENABLED(AUTO_POWER_CONTROL)
-    #define AUTO_POWER_FANS	    	#define AUTO_POWER_FANS
-    #define AUTO_POWER_E_FANS	    	#define AUTO_POWER_E_FANS
-    #define AUTO_POWER_CONTROLLERFA 	#define AUTO_POWER_CONTROLLERFA
-    #define POWER_TIMEOUT 30	    	#define POWER_TIMEOUT 30
-  #endif			      #endif
-				    
-#endif				    #endif
-				    
-// @section temperature		    // @section temperature
-				    
-//================================= //=================================
-//============================= The //============================= The
-//================================= //=================================
-				    
-/**				    /**
- * --NORMAL IS 4.7kohm PULLUP!-- 1k  * --NORMAL IS 4.7kohm PULLUP!-- 1k
- *				     *
- * Temperature sensors available:    * Temperature sensors available:
- *				     *
- *    -4 : thermocouple with AD8495  *	  -4 : thermocouple with AD8495
- *    -3 : thermocouple with MAX318  *	  -3 : thermocouple with MAX318
- *    -2 : thermocouple with MAX667  *	  -2 : thermocouple with MAX667
- *    -1 : thermocouple with AD595   *	  -1 : thermocouple with AD595
- *     0 : not used		     *	   0 : not used
- *     1 : 100k thermistor - best c  *	   1 : 100k thermistor - best c
- *     2 : 200k thermistor - ATC Se  *	   2 : 200k thermistor - ATC Se
- *     3 : Mendel-parts thermistor   *	   3 : Mendel-parts thermistor
- *     4 : 10k thermistor !! do not  *	   4 : 10k thermistor !! do not
- *     5 : 100K thermistor - ATC Se  *	   5 : 100K thermistor - ATC Se
- *   501 : 100K Zonestar (Tronxy X3  *	 501 : 100K Zonestar (Tronxy X3
- *     6 : 100k EPCOS - Not as accu  *	   6 : 100k EPCOS - Not as accu
-
-
-
-
-
-
-
-2024-04-01 23:07                                                  Page 6
-
-
- *     7 : 100k Honeywell thermisto  *	   7 : 100k Honeywell thermisto
- *    71 : 100k Honeywell thermisto  *	  71 : 100k Honeywell thermisto
- *     8 : 100k 0603 SMD Vishay NTC  *	   8 : 100k 0603 SMD Vishay NTC
- *     9 : 100k GE Sensing AL03006-  *	   9 : 100k GE Sensing AL03006-
- *    10 : 100k RS thermistor 198-9  *	  10 : 100k RS thermistor 198-9
- *    11 : 100k beta 3950 1% thermi  *	  11 : 100k beta 3950 1% thermi
- *    12 : 100k 0603 SMD Vishay NTC  *	  12 : 100k 0603 SMD Vishay NTC
- *    13 : 100k Hisens 3950  1% up   *	  13 : 100k Hisens 3950	 1% up
- *    15 : 100k thermistor calibrat  *	  15 : 100k thermistor calibrat
- *    20 : the PT100 circuit found   *	  20 : the PT100 circuit found
- *    60 : 100k Maker's Tool Works   *	  60 : 100k Maker's Tool Works
- *    66 : 4.7M High Temperature th  *	  66 : 4.7M High Temperature th
- *    70 : the 100K thermistor foun  *	  70 : the 100K thermistor foun
- *    75 : 100k Generic Silicon Hea  *	  75 : 100k Generic Silicon Hea
- *				     *
- *	 1k ohm pullup tables - Thi  *	     1k ohm pullup tables - Thi
- *				(bu  *				    (bu
- *    51 : 100k thermistor - EPCOS   *	  51 : 100k thermistor - EPCOS
- *    52 : 200k thermistor - ATC Se  *	  52 : 200k thermistor - ATC Se
- *    55 : 100k thermistor - ATC Se  *	  55 : 100k thermistor - ATC Se
- *				     *
- *  1047 : Pt1000 with 4k7 pullup    *	1047 : Pt1000 with 4k7 pullup
- *  1010 : Pt1000 with 1k pullup (n  *	1010 : Pt1000 with 1k pullup (n
- *   147 : Pt100 with 4k7 pullup     *	 147 : Pt100 with 4k7 pullup
- *   110 : Pt100 with 1k pullup (no  *	 110 : Pt100 with 1k pullup (no
- *				     *
- *	   Use these for Testing or  *	       Use these for Testing or
- *   998 : Dummy Table that ALWAYS   *	 998 : Dummy Table that ALWAYS
- *   999 : Dummy Table that ALWAYS   *	 999 : Dummy Table that ALWAYS
- *				     *
- * :{ '0': "Not used", '1':"100k /   * :{ '0': "Not used", '1':"100k /
- */				     */
-#define TEMP_SENSOR_0 1		    #define TEMP_SENSOR_0 1
-#define TEMP_SENSOR_1 0		    #define TEMP_SENSOR_1 0
-#define TEMP_SENSOR_2 0		    #define TEMP_SENSOR_2 0
-#define TEMP_SENSOR_3 0		    #define TEMP_SENSOR_3 0
-#define TEMP_SENSOR_4 0		    #define TEMP_SENSOR_4 0
-#define TEMP_SENSOR_BED 1	    #define TEMP_SENSOR_BED 0
-#define TEMP_SENSOR_CHAMBER 0	    #define TEMP_SENSOR_CHAMBER 0
-				    
-// Dummy thermistor constant temper // Dummy thermistor constant temper
-#define DUMMY_THERMISTOR_998_VALUE  #define DUMMY_THERMISTOR_998_VALUE
-#define DUMMY_THERMISTOR_999_VALUE  #define DUMMY_THERMISTOR_999_VALUE
-				    
-// Use temp sensor 1 as a redundant // Use temp sensor 1 as a redundant
-// from the two sensors differ too  // from the two sensors differ too
-//#define TEMP_SENSOR_1_AS_REDUNDAN //#define TEMP_SENSOR_1_AS_REDUNDAN
-#define MAX_REDUNDANT_TEMP_SENSOR_D #define MAX_REDUNDANT_TEMP_SENSOR_D
-				    
-// Extruder temperature must be clo // Extruder temperature must be clo
-#define TEMP_RESIDENCY_TIME 10	//  #define TEMP_RESIDENCY_TIME 10  //
-#define TEMP_HYSTERESIS 5	//  #define TEMP_HYSTERESIS 3	    //
-#define TEMP_WINDOW	1	//  #define TEMP_WINDOW	    1	    //
-				    
-// Bed temperature must be close to // Bed temperature must be close to
-#define TEMP_BED_RESIDENCY_TIME 10  #define TEMP_BED_RESIDENCY_TIME 10
-
-
-
-
-
-
-
-2024-04-01 23:07                                                  Page 7
-
-
-#define TEMP_BED_HYSTERESIS 3	    #define TEMP_BED_HYSTERESIS 3
-#define TEMP_BED_WINDOW	    1	    #define TEMP_BED_WINDOW	1
-				    
-// The minimal temperature defines  // The minimal temperature defines
-// to check that the wiring to the  // to check that the wiring to the
-// Otherwise this would lead to the // Otherwise this would lead to the
-#define HEATER_0_MINTEMP 5	    #define HEATER_0_MINTEMP 5
-#define HEATER_1_MINTEMP 5	    #define HEATER_1_MINTEMP 5
-#define HEATER_2_MINTEMP 5	    #define HEATER_2_MINTEMP 5
-#define HEATER_3_MINTEMP 5	    #define HEATER_3_MINTEMP 5
-#define HEATER_4_MINTEMP 5	    #define HEATER_4_MINTEMP 5
-#define BED_MINTEMP 5		    #define BED_MINTEMP 5
-				    
-// When temperature exceeds max tem // When temperature exceeds max tem
-// This feature exists to protect y // This feature exists to protect y
-// You should use MINTEMP for therm // You should use MINTEMP for therm
-#define HEATER_0_MAXTEMP 250  //275 #define HEATER_0_MAXTEMP 275
-#define HEATER_1_MAXTEMP 275	    #define HEATER_1_MAXTEMP 275
-#define HEATER_2_MAXTEMP 275	    #define HEATER_2_MAXTEMP 275
-#define HEATER_3_MAXTEMP 275	    #define HEATER_3_MAXTEMP 275
-#define HEATER_4_MAXTEMP 275	    #define HEATER_4_MAXTEMP 275
-#define BED_MAXTEMP 120 //150	    #define BED_MAXTEMP 150
-				    
-//================================= //=================================
-//============================= PID //============================= PID
-//================================= //=================================
-// PID Tuning Guide here: http://re // PID Tuning Guide here: http://re
-				    
-// Comment the following line to di // Comment the following line to di
-#define PIDTEMP			    #define PIDTEMP
-#define BANG_MAX 200	 // Limits  #define BANG_MAX 255     // Limits
-#define PID_MAX BANG_MAX // Limits  #define PID_MAX BANG_MAX // Limits
-#define PID_K1 0.95	 // Smoothi #define PID_K1 0.95	     // Smoothi
-#if ENABLED(PIDTEMP)		    #if ENABLED(PIDTEMP)
-  //#define PID_AUTOTUNE_MENU // Ad   //#define PID_AUTOTUNE_MENU // Ad
-  //#define PID_DEBUG // Sends debu   //#define PID_DEBUG // Sends debu
-  //#define PID_OPENLOOP 1 // Puts    //#define PID_OPENLOOP 1 // Puts
-  //#define SLOW_PWM_HEATERS // PWM   //#define SLOW_PWM_HEATERS // PWM
-  //#define PID_PARAMS_PER_HOTEND /   //#define PID_PARAMS_PER_HOTEND /
-				  / 				      /
-  #define PID_FUNCTIONAL_RANGE 25 /   #define PID_FUNCTIONAL_RANGE 10 /
-				  / 				      /
-				    
-  // If you are using a pre-configu   // If you are using a pre-configu
-				    
-  // Ultimaker			      // Ultimaker
-    #define DEFAULT_Kp 11.92	      #define DEFAULT_Kp 22.2
-  #define DEFAULT_Ki 0.87	      #define DEFAULT_Ki 1.08
-  #define DEFAULT_Kd 40.97	      #define DEFAULT_Kd 114
-				    
-  // MakerGear			      // MakerGear
-  //#define DEFAULT_Kp 7.0	      //#define DEFAULT_Kp 7.0
-  //#define DEFAULT_Ki 0.1	      //#define DEFAULT_Ki 0.1
-  //#define DEFAULT_Kd 12	      //#define DEFAULT_Kd 12
-				    
-  // Mendel Parts V9 on 12V	      // Mendel Parts V9 on 12V
-
-
-
-
-
-
-
-2024-04-01 23:07                                                  Page 8
-
-
-  //#define DEFAULT_Kp 63.0	      //#define DEFAULT_Kp 63.0
-  //#define DEFAULT_Ki 2.25	      //#define DEFAULT_Ki 2.25
-  //#define DEFAULT_Kd 440	      //#define DEFAULT_Kd 440
-				    
-#endif // PIDTEMP		    #endif // PIDTEMP
-				    
-//================================= //=================================
-//============================= PID //============================= PID
-//================================= //=================================
-				    
-/**				    /**
- * PID Bed Heating		     * PID Bed Heating
- *				     *
- * If this option is enabled set PI  * If this option is enabled set PI
- * If this option is disabled, bang  * If this option is disabled, bang
- *				     *
- * The PID frequency will be the sa  * The PID frequency will be the sa
- * If PID_dT is the default, and co  * If PID_dT is the default, and co
- * which is fine for driving a squa  * which is fine for driving a squa
- * impact FET heating. This also wo  * impact FET heating. This also wo
- * heater. If your configuration is  * heater. If your configuration is
- * the issues involved, don't use b  * the issues involved, don't use b
- */				     */
-#define PIDTEMPBED		    //#define PIDTEMPBED
-				    
-//#define BED_LIMIT_SWITCHING	    //#define BED_LIMIT_SWITCHING
-				    
-/**				    /**
- * Max Bed Power		     * Max Bed Power
- * Applies to all forms of bed cont  * Applies to all forms of bed cont
- * When set to any value below 255,  * When set to any value below 255,
- * so don't use it unless you are O  * so don't use it unless you are O
- */				     */
-#define MAX_BED_POWER 255 // limits #define MAX_BED_POWER 255 // limits
-				    
-#if ENABLED(PIDTEMPBED)		    #if ENABLED(PIDTEMPBED)
-				    
-  //#define PID_BED_DEBUG // Sends    //#define PID_BED_DEBUG // Sends
-				    
-  //120V 250W silicone heater into    //120V 250W silicone heater into
-  //from FOPDT model - kp=.39 Tp=40   //from FOPDT model - kp=.39 Tp=40
-  #define DEFAULT_bedKp 57.71	      #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi 8.81	      #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 252.09	      #define DEFAULT_bedKd 305.4
-				    
-  //120V 250W silicone heater into    //120V 250W silicone heater into
-  //from pidautotune		      //from pidautotune
-  //#define DEFAULT_bedKp 97.1	      //#define DEFAULT_bedKp 97.1
-  //#define DEFAULT_bedKi 1.41	      //#define DEFAULT_bedKi 1.41
-  //#define DEFAULT_bedKd 1675.16     //#define DEFAULT_bedKd 1675.16
-				    
-  // FIND YOUR OWN: "M303 E-1 C8 S9   // FIND YOUR OWN: "M303 E-1 C8 S9
-#endif // PIDTEMPBED		    #endif // PIDTEMPBED
-				    
-// @section extruder		    // @section extruder
-				    
-
-
-
-
-
-
-
-2024-04-01 23:07                                                  Page 9
-
-
-/**				    /**
- * Prevent extrusion if the tempera  * Prevent extrusion if the tempera
- * Add M302 to set the minimum extr  * Add M302 to set the minimum extr
- * cold extrusion prevention on and  * cold extrusion prevention on and
- *				     *
- * *** IT IS HIGHLY RECOMMENDED TO   * *** IT IS HIGHLY RECOMMENDED TO
- */				     */
-#define PREVENT_COLD_EXTRUSION	    #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 170	    #define EXTRUDE_MINTEMP 170
-				    
-/**				    /**
- * Prevent a single extrusion longe  * Prevent a single extrusion longe
- * Note: For Bowden Extruders make   * Note: For Bowden Extruders make
- */				     */
-#define PREVENT_LENGTHY_EXTRUDE	    #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH 200	    #define EXTRUDE_MAXLENGTH 200
-				    
-//================================= //=================================
-//======================== Thermal  //======================== Thermal
-//================================= //=================================
-				    
-/**				    /**
- * Thermal Protection provides addi  * Thermal Protection provides addi
- * and fire. Marlin always includes  * and fire. Marlin always includes
- * protect against a broken or disc  * protect against a broken or disc
- *				     *
- * The issue: If a thermistor falls  * The issue: If a thermistor falls
- * temperature of the air in the ro  * temperature of the air in the ro
- * the heater on.		     * the heater on.
- *				     *
- * If you get "Thermal Runaway" or   * If you get "Thermal Runaway" or
- * details can be tuned in Configur  * details can be tuned in Configur
- */				     */
-				    
-#define THERMAL_PROTECTION_HOTENDS  #define THERMAL_PROTECTION_HOTENDS
-#define THERMAL_PROTECTION_BED	    #define THERMAL_PROTECTION_BED
-				    
-//================================= //=================================
-//============================= Mec //============================= Mec
-//================================= //=================================
-				    
-// @section machine		    // @section machine
-				    
-// Uncomment one of these options t // Uncomment one of these options t
-// either in the usual order or rev // either in the usual order or rev
-//#define COREXY		    //#define COREXY
-//#define COREXZ		    //#define COREXZ
-//#define COREYZ		    //#define COREYZ
-//#define COREYX		    //#define COREYX
-//#define COREZX		    //#define COREZX
-//#define COREZY		    //#define COREZY
-				    
-//================================= //=================================
-//============================== En //============================== En
-//================================= //=================================
-				    
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 10
-
-
-// @section homing		    // @section homing
-				    
-// Specify here all the endstop con // Specify here all the endstop con
-// Almost all printers will be usin // Almost all printers will be usin
-// extra connectors. Leave undefine // extra connectors. Leave undefine
-#define USE_XMIN_PLUG		    #define USE_XMIN_PLUG
-#define USE_YMIN_PLUG		    #define USE_YMIN_PLUG
-#define USE_ZMIN_PLUG		    #define USE_ZMIN_PLUG
-//#define USE_XMAX_PLUG		    //#define USE_XMAX_PLUG
-//#define USE_YMAX_PLUG		    //#define USE_YMAX_PLUG
-//#define USE_ZMAX_PLUG		    //#define USE_ZMAX_PLUG
-				    
-// Enable pullup for all endstops t // Enable pullup for all endstops t
-#define ENDSTOPPULLUPS		    #define ENDSTOPPULLUPS
-#if DISABLED(ENDSTOPPULLUPS)	    #if DISABLED(ENDSTOPPULLUPS)
-  // Disable ENDSTOPPULLUPS to set    // Disable ENDSTOPPULLUPS to set
-  //#define ENDSTOPPULLUP_XMAX	      //#define ENDSTOPPULLUP_XMAX
-  //#define ENDSTOPPULLUP_YMAX	      //#define ENDSTOPPULLUP_YMAX
-  //#define ENDSTOPPULLUP_ZMAX	      //#define ENDSTOPPULLUP_ZMAX
-  //#define ENDSTOPPULLUP_XMIN	      //#define ENDSTOPPULLUP_XMIN
-  //#define ENDSTOPPULLUP_YMIN	      //#define ENDSTOPPULLUP_YMIN
-  //#define ENDSTOPPULLUP_ZMIN	      //#define ENDSTOPPULLUP_ZMIN
-  //#define ENDSTOPPULLUP_ZMIN_PROB   //#define ENDSTOPPULLUP_ZMIN_PROB
-#endif				    #endif
-				    
-// Mechanical endstop with COM to g // Mechanical endstop with COM to g
-#define X_MIN_ENDSTOP_INVERTING tru #define X_MIN_ENDSTOP_INVERTING fal
-#define Y_MIN_ENDSTOP_INVERTING tru #define Y_MIN_ENDSTOP_INVERTING fal
-#define Z_MIN_ENDSTOP_INVERTING tru #define Z_MIN_ENDSTOP_INVERTING fal
-#define X_MAX_ENDSTOP_INVERTING fal #define X_MAX_ENDSTOP_INVERTING fal
-#define Y_MAX_ENDSTOP_INVERTING fal #define Y_MAX_ENDSTOP_INVERTING fal
-#define Z_MAX_ENDSTOP_INVERTING fal #define Z_MAX_ENDSTOP_INVERTING fal
-#define Z_MIN_PROBE_ENDSTOP_INVERTI #define Z_MIN_PROBE_ENDSTOP_INVERTI
-				    
-/**				    /**
- * Stepper Drivers		     * Stepper Drivers
- *				     *
- * These settings allow Marlin to t  * These settings allow Marlin to t
- * stepper drivers that support the  * stepper drivers that support the
- *				     *
- * A4988 is assumed for unspecified  * A4988 is assumed for unspecified
- *				     *
- * Options: A4988, DRV8825, LV8729,  * Options: A4988, DRV8825, LV8729,
- *	    TMC2130, TMC2130_STANDA  *		TMC2130, TMC2130_STANDA
- *	    TMC26X,  TMC26X_STANDAL  *		TMC26X,	 TMC26X_STANDAL
- *	    TMC5130, TMC5130_STANDA  *		TMC5130, TMC5130_STANDA
- * :['A4988', 'DRV8825', 'LV8729',   * :['A4988', 'DRV8825', 'LV8729',
- */				     */
-#define X_DRIVER_TYPE  TMC2100	    //#define X_DRIVER_TYPE  A4988
-#define Y_DRIVER_TYPE  TMC2100	    //#define Y_DRIVER_TYPE  A4988
-#define Z_DRIVER_TYPE  TMC2100	    //#define Z_DRIVER_TYPE  A4988
-//#define X2_DRIVER_TYPE TMC2100    //#define X2_DRIVER_TYPE A4988
-//#define Y2_DRIVER_TYPE TMC2100    //#define Y2_DRIVER_TYPE A4988
-#define Z2_DRIVER_TYPE TMC2100	    //#define Z2_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE TMC2100	    //#define E0_DRIVER_TYPE A4988
-//#define E1_DRIVER_TYPE TMC2100    //#define E1_DRIVER_TYPE A4988
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 11
-
-
-//#define E2_DRIVER_TYPE TMC2100    //#define E2_DRIVER_TYPE A4988
-//#define E3_DRIVER_TYPE TMC2100    //#define E3_DRIVER_TYPE A4988
-//#define E4_DRIVER_TYPE TMC2100    //#define E4_DRIVER_TYPE A4988
-				    
-// Enable this feature if all enabl // Enable this feature if all enabl
-// This will remove the need to pol // This will remove the need to pol
-//#define ENDSTOP_INTERRUPTS_FEATUR //#define ENDSTOP_INTERRUPTS_FEATUR
-				    
-/**				    /**
- * Endstop Noise Filter		     * Endstop Noise Filter
- *				     *
- * Enable this option if endstops f  * Enable this option if endstops f
- * NOTE: Enabling this feature mean  * NOTE: Enabling this feature mean
- * will end up at a slightly differ  * will end up at a slightly differ
- * reduce accuracy of some bed prob  * reduce accuracy of some bed prob
- * For mechanical switches, the bet  * For mechanical switches, the bet
- * a 100 nanofarads ceramic capacit  * a 100 nanofarads ceramic capacit
- * essentially noise-proof without   * essentially noise-proof without
- * This option also increases MCU l  * This option also increases MCU l
- * So this is not recommended. USE   * So this is not recommended. USE
- * (This feature is not required fo  * (This feature is not required fo
- * based on the Makerbot design, si  * based on the Makerbot design, si
- */				     */
-#define ENDSTOP_NOISE_FILTER	    //#define ENDSTOP_NOISE_FILTER
-				    
-//================================= //=================================
-//============================== Mo //============================== Mo
-//================================= //=================================
-// @section motion		    // @section motion
-				    
-/**				    /**
- * Default Settings		     * Default Settings
- *				     *
- * These settings can be reset by M  * These settings can be reset by M
- *				     *
- * Note that if EEPROM is enabled,   * Note that if EEPROM is enabled,
- */				     */
-				    
-/**				    /**
- * With this option each E stepper   * With this option each E stepper
- * following movement settings. If   * following movement settings. If
- * total number of extruders, the l  * total number of extruders, the l
- */				     */
-//#define DISTINCT_E_FACTORS	    //#define DISTINCT_E_FACTORS
-				    
-/**				    /**
- * Default Axis Steps Per Unit (ste  * Default Axis Steps Per Unit (ste
- * Override with M92		     * Override with M92
- *				     *
- */				     */
-#define DEFAULT_AXIS_STEPS_PER_UNIT #define DEFAULT_AXIS_STEPS_PER_UNIT
-/**				    
- * Default Max Feed Rate (mm/s)	    /**
- * Override with M203		     * Default Max Feed Rate (mm/s)
- *				     * Override with M203
- */				     *
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 12
-
-
-#define DEFAULT_MAX_FEEDRATE	     */
-				    #define DEFAULT_MAX_FEEDRATE
-/**				    
- * Default Max Acceleration (change /**
- * (Maximum start speed for acceler  * Default Max Acceleration (change
- * Override with M201		     * (Maximum start speed for acceler
- *				     * Override with M201
- */				     *
-#define DEFAULT_MAX_ACCELERATION     */
-				    #define DEFAULT_MAX_ACCELERATION
-/**				    
- * Default Acceleration (change/s)  /**
- * Override with M204		     * Default Acceleration (change/s)
- *				     * Override with M204
- *   M204 P    Acceleration	     *
- *   M204 R    Retract Acceleration  *	 M204 P	   Acceleration
- *   M204 T    Travel Acceleration   *	 M204 R	   Retract Acceleration
- */				     *	 M204 T	   Travel Acceleration
-#define DEFAULT_ACCELERATION	     */
-#define DEFAULT_RETRACT_ACCELERATIO #define DEFAULT_ACCELERATION
-#define DEFAULT_TRAVEL_ACCELERATION #define DEFAULT_RETRACT_ACCELERATIO
-				    #define DEFAULT_TRAVEL_ACCELERATION
-/**				    
- * Default Jerk (mm/s)		    /**
- * Override with M205 X Y Z E	     * Default Jerk (mm/s)
- *				     * Override with M205 X Y Z E
- * "Jerk" specifies the minimum spe  *
- * When changing speed and directio  * "Jerk" specifies the minimum spe
- * value set here, it may happen in  * When changing speed and directio
- */				     * value set here, it may happen in
-#define DEFAULT_XJERK		     */
-#define DEFAULT_YJERK		    #define DEFAULT_XJERK
-#define DEFAULT_ZJERK		    #define DEFAULT_YJERK
-#define DEFAULT_EJERK		    #define DEFAULT_ZJERK
-				    #define DEFAULT_EJERK
-/**				    
- * S-Curve Acceleration		    /**
- *				     * S-Curve Acceleration
- * This option eliminates vibration  *
- * curve to move acceleration, prod  * This option eliminates vibration
- *				     * curve to move acceleration, prod
- * See https://github.com/synthetos  *
- */				     * See https://github.com/synthetos
-#define S_CURVE_ACCELERATION	     */
-				    //#define S_CURVE_ACCELERATION
-//================================= 
-//============================= Z P //=================================
-//================================= //============================= Z P
-// @section probes		    //=================================
-				    // @section probes
-//				    
-// See http://marlinfw.org/docs/con //
-//				    // See http://marlinfw.org/docs/con
-				    //
-/**				    
- * Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_P /**
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 13
-
-
- *				     * Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_P
- * Enable this option for a probe c  *
- */				     * Enable this option for a probe c
-#define Z_MIN_PROBE_USES_Z_MIN_ENDS  */
-				    #define Z_MIN_PROBE_USES_Z_MIN_ENDS
-/**				    
- * Z_MIN_PROBE_ENDSTOP		    /**
- *				     * Z_MIN_PROBE_ENDSTOP
- * Enable this option for a probe c  *
- * (By default Marlin assumes the Z  * Enable this option for a probe c
- * To use a custom Z Probe pin, set  * (By default Marlin assumes the Z
- *				     * To use a custom Z Probe pin, set
- *  - The simplest option is to use  *
- *  - Use 5V for powered (usually i  *	- The simplest option is to use
- *				     *	- Use 5V for powered (usually i
- *  - RAMPS 1.3/1.4 boards may use   *
- *    - For simple switches connect  *	- RAMPS 1.3/1.4 boards may use
- *	- normally-closed switches   *	  - For simple switches connect
- *	- normally-open switches to  *	    - normally-closed switches
- *				     *	    - normally-open switches to
- * WARNING: Setting the wrong pin m  *
- * disastrous consequences. Use wit  * WARNING: Setting the wrong pin m
- *				     * disastrous consequences. Use wit
- */				     *
-//#define Z_MIN_PROBE_ENDSTOP	     */
-				    //#define Z_MIN_PROBE_ENDSTOP
-/**				    
- * Probe Type			    /**
- *				     * Probe Type
- * Allen Key Probes, Servo Probes,   *
- * Activate one of these to use Aut  * Allen Key Probes, Servo Probes,
- */				     * Activate one of these to use Aut
-				     */
-/**				    
- * The "Manual Probe" provides a me /**
- * Use G29 repeatedly, adjusting th  * The "Manual Probe" provides a me
- * or (with LCD_BED_LEVELING) the L  * Use G29 repeatedly, adjusting th
- */				     * or (with LCD_BED_LEVELING) the L
-#define PROBE_MANUALLY		     */
-//#define MANUAL_PROBE_START_Z 0.2  //#define PROBE_MANUALLY
-				    //#define MANUAL_PROBE_START_Z 0.2
-/**				    
- * A Fix-Mounted Probe either doesn /**
- *   (e.g., an inductive probe or a  * A Fix-Mounted Probe either doesn
- */				     *	 (e.g., an inductive probe or a
-//#define FIX_MOUNTED_PROBE	     */
-				    //#define FIX_MOUNTED_PROBE
-/**				    
- * Z Servo Probe, such as an endsto /**
- */				     * Z Servo Probe, such as an endsto
-//#define Z_PROBE_SERVO_NR 0   // D  */
-//#define Z_SERVO_ANGLES {70,0}	 // //#define Z_PROBE_SERVO_NR 0   // D
-				    //#define Z_SERVO_ANGLES {70,0}  //
-/**				    
- * The BLTouch probe uses a Hall ef /**
- */				     * The BLTouch probe uses a Hall ef
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 14
-
-
-//#define BLTOUCH		     */
-#if ENABLED(BLTOUCH)		    //#define BLTOUCH
-  //#define BLTOUCH_DELAY 375	//  
-#endif				    /**
-				     * Enable one or more of the follow
-/**				     * Heaters and/or fans can be disab
- * Enable one or more of the follow  * noise. A delay can also be added
- * Heaters and/or fans can be disab  * These options are most useful fo
- * noise. A delay can also be added  * readings with inductive probes a
- * These options are most useful fo  */
- * readings with inductive probes a //#define PROBING_HEATERS_OFF
- */				    #if ENABLED(PROBING_HEATERS_OFF)
-//#define PROBING_HEATERS_OFF	      //#define WAIT_FOR_BED_HEATER
-#if ENABLED(PROBING_HEATERS_OFF)    #endif
-  //#define WAIT_FOR_BED_HEATER	    //#define PROBING_FANS_OFF
-#endif				    //#define DELAY_BEFORE_PROBING 200
-//#define PROBING_FANS_OFF	    
-//#define DELAY_BEFORE_PROBING 200  // A probe that is deployed and sto
-				    //#define SOLENOID_PROBE
-// A probe that is deployed and sto 
-//#define SOLENOID_PROBE	    // A sled-mounted probe like those
-				    //#define Z_PROBE_SLED
-// A sled-mounted probe like those  //#define SLED_DOCKING_OFFSET 5  //
-//#define Z_PROBE_SLED		    
-//#define SLED_DOCKING_OFFSET 5	 // //
-				    // For Z_PROBE_ALLEN_KEY see the De
-//				    //
-// For Z_PROBE_ALLEN_KEY see the De 
-//				    /**
-				     *	 Z Probe to nozzle (X,Y) offset
-/**				     *	 X and Y offsets must be intege
- *   Z Probe to nozzle (X,Y) offset  *
- *   X and Y offsets must be intege  *	 In the following example the X
- *				     *	 #define X_PROBE_OFFSET_FROM_EX
- *   In the following example the X  *	 #define Y_PROBE_OFFSET_FROM_EX
- *   #define X_PROBE_OFFSET_FROM_EX  *
- *   #define Y_PROBE_OFFSET_FROM_EX  *	    +-- BACK ---+
- *				     *	    |		|
- *	+-- BACK ---+		     *	  L |	 (+) P	| R <-- probe (
- *	|	    |		     *	  E |		| I
- *    L |    (+) P  | R <-- probe (  *	  F | (-) N (+) | G <-- nozzle
- *    E |	    | I		     *	  T |		| H
- *    F | (-) N (+) | G <-- nozzle   *	    |	 (-)	| T
- *    T |	    | H		     *	    |		|
- *	|    (-)    | T		     *	    O-- FRONT --+
- *	|	    |		     *	  (0,0)
- *	O-- FRONT --+		     */
- *    (0,0)			    #define X_PROBE_OFFSET_FROM_EXTRUDE
- */				    #define Y_PROBE_OFFSET_FROM_EXTRUDE
-#define X_PROBE_OFFSET_FROM_EXTRUDE #define Z_PROBE_OFFSET_FROM_EXTRUDE
-#define Y_PROBE_OFFSET_FROM_EXTRUDE 
-#define Z_PROBE_OFFSET_FROM_EXTRUDE // Certain types of probes need to
-				    #define MIN_PROBE_EDGE 10
-// Certain types of probes need to  
-#define MIN_PROBE_EDGE 30	    // X and Y axis travel speed (mm/m)
-				    #define XY_PROBE_SPEED 8000
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 15
-
-
-// X and Y axis travel speed (mm/m) 
-#define XY_PROBE_SPEED 8000	    // Feedrate (mm/m) for the first ap
-				    #define Z_PROBE_SPEED_FAST HOMING_F
-// Feedrate (mm/m) for the first ap 
-#define Z_PROBE_SPEED_FAST HOMING_F // Feedrate (mm/m) for the "accurat
-				    #define Z_PROBE_SPEED_SLOW (Z_PROBE
-// Feedrate (mm/m) for the "accurat 
-#define Z_PROBE_SPEED_SLOW (Z_PROBE // The number of probes to perform
-				    //	 Set to 2 for a fast/slow probe
-// The number of probes to perform  //	 Set to 3 or more for slow prob
-//   Set to 2 for a fast/slow probe //#define MULTIPLE_PROBING 2
-//   Set to 3 or more for slow prob 
-//#define MULTIPLE_PROBING 2	    /**
-				     * Z probes require clearance when
-/**				     * probe points to avoid hitting th
- * Z probes require clearance when   * Servo-mounted probes require ext
- * probe points to avoid hitting th  * Inductive probes need space to k
- * Servo-mounted probes require ext  *
- * Inductive probes need space to k  * Use these settings to specify th
- *				     * lower the bed). The values set h
- * Use these settings to specify th  * probe Z Offset set with Z_PROBE_
- * lower the bed). The values set h  * Only integer values >= 1 are val
- * probe Z Offset set with Z_PROBE_  *
- * Only integer values >= 1 are val  * Example: `M851 Z-5` with a CLEAR
- *				     *	   But: `M851 Z+1` with a CLEAR
- * Example: `M851 Z-5` with a CLEAR  */
- *     But: `M851 Z+1` with a CLEAR #define Z_CLEARANCE_DEPLOY_PROBE
- */				    #define Z_CLEARANCE_BETWEEN_PROBES
-#define Z_CLEARANCE_DEPLOY_PROBE    #define Z_CLEARANCE_MULTI_PROBE
-#define Z_CLEARANCE_BETWEEN_PROBES  //#define Z_AFTER_PROBING
-#define Z_CLEARANCE_MULTI_PROBE	    
-//#define Z_AFTER_PROBING	    #define Z_PROBE_LOW_POINT
-				    
-#define Z_PROBE_LOW_POINT	    // For M851 give a range for adjust
-				    #define Z_PROBE_OFFSET_RANGE_MIN -2
-// For M851 give a range for adjust #define Z_PROBE_OFFSET_RANGE_MAX 20
-#define Z_PROBE_OFFSET_RANGE_MIN -2 
-#define Z_PROBE_OFFSET_RANGE_MAX 20 // Enable the M48 repeatability tes
-				    //#define Z_MIN_PROBE_REPEATABILITY
-// Enable the M48 repeatability tes 
-//#define Z_MIN_PROBE_REPEATABILITY // For Inverting Stepper Enable Pin
-				    // :{ 0:'Low', 1:'High' }
-// For Inverting Stepper Enable Pin #define X_ENABLE_ON 0
-// :{ 0:'Low', 1:'High' }	    #define Y_ENABLE_ON 0
-#define X_ENABLE_ON 0		    #define Z_ENABLE_ON 0
-#define Y_ENABLE_ON 0		    #define E_ENABLE_ON 0 // For all ex
-#define Z_ENABLE_ON 0		    
-#define E_ENABLE_ON 0 // For all ex // Disables axis stepper immediatel
-				    // WARNING: When motors turn off th
-// Disables axis stepper immediatel #define DISABLE_X false
-// WARNING: When motors turn off th #define DISABLE_Y false
-#define DISABLE_X false		    #define DISABLE_Z false
-#define DISABLE_Y false		    // Warn on display about possibly r
-#define DISABLE_Z false		    //#define DISABLE_REDUCED_ACCURACY_
-// Warn on display about possibly r 
-//#define DISABLE_REDUCED_ACCURACY_ // @section extruder
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 16
-
-
-				    
-// @section extruder		    #define DISABLE_E false // For all
-				    #define DISABLE_INACTIVE_EXTRUDER t
-#define DISABLE_E false // For all  
-#define DISABLE_INACTIVE_EXTRUDER t // @section machine
-				    
-// @section machine		    // Invert the stepper direction. Ch
-				    #define INVERT_X_DIR false
-// Invert the stepper direction. Ch #define INVERT_Y_DIR true
-#define INVERT_X_DIR false	    #define INVERT_Z_DIR false
-#define INVERT_Y_DIR false	    
-#define INVERT_Z_DIR true	    // @section extruder
-				    
-// @section extruder		    // For direct drive extruder v9 set
-				    #define INVERT_E0_DIR false
-// For direct drive extruder v9 set #define INVERT_E1_DIR false
-#define INVERT_E0_DIR false	    #define INVERT_E2_DIR false
-#define INVERT_E1_DIR false	    #define INVERT_E3_DIR false
-#define INVERT_E2_DIR false	    #define INVERT_E4_DIR false
-#define INVERT_E3_DIR false	    
-#define INVERT_E4_DIR false	    // @section homing
-				    
-// @section homing		    //#define NO_MOTION_BEFORE_HOMING
-				    
-//#define NO_MOTION_BEFORE_HOMING   //#define UNKNOWN_Z_NO_RAISE // Don
-				    
-//#define UNKNOWN_Z_NO_RAISE // Don //#define Z_HOMING_HEIGHT 4	 // (in
-				    				 // Be
-//#define Z_HOMING_HEIGHT 4  // (in 
-			     // Be  // Direction of endstops when homin
-				    // :[-1,1]
-// Direction of endstops when homin #define X_HOME_DIR -1
-// :[-1,1]			    #define Y_HOME_DIR -1
-#define X_HOME_DIR -1		    #define Z_HOME_DIR -1
-#define Y_HOME_DIR -1		    
-#define Z_HOME_DIR -1		    // @section machine
-				    
-// @section machine		    // The size of the print bed
-				    #define X_BED_SIZE 200
-// The size of the print bed	    #define Y_BED_SIZE 200
-#define X_BED_SIZE 300		    
-#define Y_BED_SIZE 310		    // Travel limits (mm) after homing,
-				    #define X_MIN_POS 0
-// Travel limits (mm) after homing, #define Y_MIN_POS 0
-#define X_MIN_POS -2		    #define Z_MIN_POS 0
-#define Y_MIN_POS -5		    #define X_MAX_POS X_BED_SIZE
-#define Z_MIN_POS 0		    #define Y_MAX_POS Y_BED_SIZE
-#define X_MAX_POS X_BED_SIZE	    #define Z_MAX_POS 200
-#define Y_MAX_POS Y_BED_SIZE	    
-#define Z_MAX_POS 400		    /**
-				     * Software Endstops
-/**				     *
- * Software Endstops		     * - Prevent moves outside the set
- *				     * - Individual axes can be disable
- * - Prevent moves outside the set   * - X and Y only apply to Cartesia
- * - Individual axes can be disable  * - Use 'M211' to set software end
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 17
-
-
- * - X and Y only apply to Cartesia  */
- * - Use 'M211' to set software end 
- */				    // Min software endstops constrain
-				    #define MIN_SOFTWARE_ENDSTOPS
-// Min software endstops constrain  #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
-#define MIN_SOFTWARE_ENDSTOPS	      #define MIN_SOFTWARE_ENDSTOP_X
-#if ENABLED(MIN_SOFTWARE_ENDSTOPS)    #define MIN_SOFTWARE_ENDSTOP_Y
-  #define MIN_SOFTWARE_ENDSTOP_X      #define MIN_SOFTWARE_ENDSTOP_Z
-  #define MIN_SOFTWARE_ENDSTOP_Y    #endif
-  #define MIN_SOFTWARE_ENDSTOP_Z    
-#endif				    // Max software endstops constrain
-				    #define MAX_SOFTWARE_ENDSTOPS
-// Max software endstops constrain  #if ENABLED(MAX_SOFTWARE_ENDSTOPS)
-#define MAX_SOFTWARE_ENDSTOPS	      #define MAX_SOFTWARE_ENDSTOP_X
-#if ENABLED(MAX_SOFTWARE_ENDSTOPS)    #define MAX_SOFTWARE_ENDSTOP_Y
-  #define MAX_SOFTWARE_ENDSTOP_X      #define MAX_SOFTWARE_ENDSTOP_Z
-  #define MAX_SOFTWARE_ENDSTOP_Y    #endif
-  #define MAX_SOFTWARE_ENDSTOP_Z    
-#endif				    #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
-				      //#define SOFT_ENDSTOPS_MENU_ITEM
-#if ENABLED(MIN_SOFTWARE_ENDSTOPS)  #endif
-  //#define SOFT_ENDSTOPS_MENU_ITEM 
-#endif				    /**
-				     * Filament Runout Sensors
-/**				     * Mechanical or opto endstops are
- * Filament Runout Sensors	     *
- * Mechanical or opto endstops are   * RAMPS-based boards use SERVO3_PI
- *				     * For other boards you may need to
- * RAMPS-based boards use SERVO3_PI  * By default the firmware assumes
- * For other boards you may need to  */
- * By default the firmware assumes  //#define FILAMENT_RUNOUT_SENSOR
- */				    #if ENABLED(FILAMENT_RUNOUT_SENSOR)
-//#define FILAMENT_RUNOUT_SENSOR      #define NUM_RUNOUT_SENSORS   1
-#if ENABLED(FILAMENT_RUNOUT_SENSOR)   #define FIL_RUNOUT_INVERTING fals
-  #define NUM_RUNOUT_SENSORS   1      #define FIL_RUNOUT_PULLUP
-  #define FIL_RUNOUT_INVERTING fals   #define FILAMENT_RUNOUT_SCRIPT "M
-  #define FIL_RUNOUT_PULLUP	    #endif
-  #define FILAMENT_RUNOUT_SCRIPT "M 
-#endif				    //=================================
-				    //=============================== B
-//================================= //=================================
-//=============================== B // @section calibrate
-//================================= 
-// @section calibrate		    /**
-				     * Choose one of the options below
-/**				     * and behavior of G29 will change
- * Choose one of the options below   *
- * and behavior of G29 will change   *	If using a Probe for Z Homing,
- *				     *
- *  If using a Probe for Z Homing,   * - AUTO_BED_LEVELING_3POINT
- *				     *	 Probe 3 arbitrary points on th
- * - AUTO_BED_LEVELING_3POINT	     *	 You specify the XY coordinates
- *   Probe 3 arbitrary points on th  *	 The result is a single tilted
- *   You specify the XY coordinates  *
- *   The result is a single tilted   * - AUTO_BED_LEVELING_LINEAR
- *				     *	 Probe several points in a grid
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 18
-
-
- * - AUTO_BED_LEVELING_LINEAR	     *	 You specify the rectangle and
- *   Probe several points in a grid  *	 The result is a single tilted
- *   You specify the rectangle and   *
- *   The result is a single tilted   * - AUTO_BED_LEVELING_BILINEAR
- *				     *	 Probe several points in a grid
- * - AUTO_BED_LEVELING_BILINEAR	     *	 You specify the rectangle and
- *   Probe several points in a grid  *	 The result is a mesh, best for
- *   You specify the rectangle and   *
- *   The result is a mesh, best for  * - AUTO_BED_LEVELING_UBL (Unified
- *				     *	 A comprehensive bed leveling s
- * - AUTO_BED_LEVELING_UBL (Unified  *	 of other systems. UBL also inc
- *   A comprehensive bed leveling s  *	 Validation and Mesh Editing sy
- *   of other systems. UBL also inc  *
- *   Validation and Mesh Editing sy  * - MESH_BED_LEVELING
- *				     *	 Probe a grid manually
- * - MESH_BED_LEVELING		     *	 The result is a mesh, suitable
- *   Probe a grid manually	     *	 For machines without a probe,
- *   The result is a mesh, suitable  *	 leveling in steps so you can m
- *   For machines without a probe,   *	 With an LCD controller the pro
- *   leveling in steps so you can m  */
- *   With an LCD controller the pro //#define AUTO_BED_LEVELING_3POINT
- */				    //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_3POINT  //#define AUTO_BED_LEVELING_BILINEA
-//#define AUTO_BED_LEVELING_LINEAR  //#define AUTO_BED_LEVELING_UBL
-//#define AUTO_BED_LEVELING_BILINEA //#define MESH_BED_LEVELING
-//#define AUTO_BED_LEVELING_UBL	    
-#define MESH_BED_LEVELING	    /**
-				     * Normally G28 leaves leveling dis
-/**				     * this option to have G28 restore
- * Normally G28 leaves leveling dis  */
- * this option to have G28 restore  //#define RESTORE_LEVELING_AFTER_G2
- */				    
-#define RESTORE_LEVELING_AFTER_G28  /**
-				     * Enable detailed logging of G28,
-/**				     * Turn on with the command 'M111 S
- * Enable detailed logging of G28,   * NOTE: Requires a lot of PROGMEM!
- * Turn on with the command 'M111 S  */
- * NOTE: Requires a lot of PROGMEM! //#define DEBUG_LEVELING_FEATURE
- */				    
-//#define DEBUG_LEVELING_FEATURE    #if ENABLED(MESH_BED_LEVELING) || E
-				      // Gradually reduce leveling corr
-#if ENABLED(MESH_BED_LEVELING) || E   // at which point movement will b
-  // Gradually reduce leveling corr   // The height can be set with M42
-  // at which point movement will b   #define ENABLE_LEVELING_FADE_HEIG
-  // The height can be set with M42 
-  #define ENABLE_LEVELING_FADE_HEIG   // For Cartesian machines, instea
-				      // split up moves into short segm
-  // For Cartesian machines, instea   // contours of the bed more close
-  // split up moves into short segm   #define SEGMENT_LEVELED_MOVES
-  // contours of the bed more close   #define LEVELED_SEGMENT_LENGTH 5.
-  #define SEGMENT_LEVELED_MOVES	    
-  #define LEVELED_SEGMENT_LENGTH 5.   /**
-				       * Enable the G26 Mesh Validation
-  /**				       */
-   * Enable the G26 Mesh Validation   //#define G26_MESH_VALIDATION
-   */				      #if ENABLED(G26_MESH_VALIDATION)
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 19
-
-
-  //#define G26_MESH_VALIDATION	    	#define MESH_TEST_NOZZLE_SIZE
-  #if ENABLED(G26_MESH_VALIDATION)  	#define MESH_TEST_LAYER_HEIGHT
-    #define MESH_TEST_NOZZLE_SIZE   	#define MESH_TEST_HOTEND_TEMP
-    #define MESH_TEST_LAYER_HEIGHT  	#define MESH_TEST_BED_TEMP
-    #define MESH_TEST_HOTEND_TEMP     #endif
-    #define MESH_TEST_BED_TEMP	    
-  #endif			    #endif
-				    
-#endif				    #if ENABLED(AUTO_BED_LEVELING_LINEA
-				    
-#if ENABLED(AUTO_BED_LEVELING_LINEA   // Set the number of grid points
-				      #define GRID_MAX_POINTS_X 3
-  // Set the number of grid points    #define GRID_MAX_POINTS_Y GRID_MA
-  #define GRID_MAX_POINTS_X 3	    
-  #define GRID_MAX_POINTS_Y GRID_MA   // Set the boundaries for probing
-				      //#define LEFT_PROBE_BED_POSITION
-  // Set the boundaries for probing   //#define RIGHT_PROBE_BED_POSITIO
-  //#define LEFT_PROBE_BED_POSITION   //#define FRONT_PROBE_BED_POSITIO
-  //#define RIGHT_PROBE_BED_POSITIO   //#define BACK_PROBE_BED_POSITION
-  //#define FRONT_PROBE_BED_POSITIO 
-  //#define BACK_PROBE_BED_POSITION   // Probe along the Y axis, advanc
-				      //#define PROBE_Y_FIRST
-  // Probe along the Y axis, advanc 
-  //#define PROBE_Y_FIRST	      #if ENABLED(AUTO_BED_LEVELING_BIL
-				    
-  #if ENABLED(AUTO_BED_LEVELING_BIL 	// Beyond the probed grid, cont
-				    	// Default is to maintain the h
-    // Beyond the probed grid, cont 	//#define EXTRAPOLATE_BEYOND_GR
-    // Default is to maintain the h 
-    //#define EXTRAPOLATE_BEYOND_GR 	//
-				    	// Experimental Subdivision of
-    //				    	// Synthesizes intermediate poi
-    // Experimental Subdivision of  	//
-    // Synthesizes intermediate poi 	//#define ABL_BILINEAR_SUBDIVIS
-    //				    	#if ENABLED(ABL_BILINEAR_SUBDIV
-    //#define ABL_BILINEAR_SUBDIVIS 	  // Number of subdivisions bet
-    #if ENABLED(ABL_BILINEAR_SUBDIV 	  #define BILINEAR_SUBDIVISIONS
-      // Number of subdivisions bet 	#endif
-      #define BILINEAR_SUBDIVISIONS 
-    #endif			      #endif
-				    
-  #endif			    #elif ENABLED(AUTO_BED_LEVELING_UBL
-				    
-#elif ENABLED(AUTO_BED_LEVELING_UBL   //===============================
-				      //========================= Unifi
-  //===============================   //===============================
-  //========================= Unifi 
-  //===============================   //#define MESH_EDIT_GFX_OVERLAY
-				    
-  //#define MESH_EDIT_GFX_OVERLAY     #define MESH_INSET 1
-				      #define GRID_MAX_POINTS_X 10
-  #define MESH_INSET 1		      #define GRID_MAX_POINTS_Y GRID_MA
-  #define GRID_MAX_POINTS_X 10	    
-  #define GRID_MAX_POINTS_Y GRID_MA   #define UBL_MESH_EDIT_MOVES_Z
-				      #define UBL_SAVE_ACTIVE_ON_M500
-  #define UBL_MESH_EDIT_MOVES_Z	    
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 20
-
-
-  #define UBL_SAVE_ACTIVE_ON_M500     //#define UBL_Z_RAISE_WHEN_OFF_ME
-				    
-  //#define UBL_Z_RAISE_WHEN_OFF_ME 
-				    #elif ENABLED(MESH_BED_LEVELING)
-				    
-#elif ENABLED(MESH_BED_LEVELING)      //===============================
-				      //===============================
-  //===============================   //===============================
-  //=============================== 
-  //===============================   #define MESH_INSET 10	     //
-				      #define GRID_MAX_POINTS_X 3    //
-  #define MESH_INSET 30		//    #define GRID_MAX_POINTS_Y GRID_MA
-  #define GRID_MAX_POINTS_X 3	 // 
-  #define GRID_MAX_POINTS_Y GRID_MA   //#define MESH_G28_REST_ORIGIN //
-				    
-  //#define MESH_G28_REST_ORIGIN // #endif // BED_LEVELING
-				    
-#endif // BED_LEVELING		    /**
-				     * Points to probe for all 3-point
-/**				     * Override if the automatically se
- * Points to probe for all 3-point   */
- * Override if the automatically se #if ENABLED(AUTO_BED_LEVELING_3POIN
- */				      //#define PROBE_PT_1_X 15
-#if ENABLED(AUTO_BED_LEVELING_3POIN   //#define PROBE_PT_1_Y 180
-  //#define PROBE_PT_1_X 15	      //#define PROBE_PT_2_X 15
-  //#define PROBE_PT_1_Y 180	      //#define PROBE_PT_2_Y 20
-  //#define PROBE_PT_2_X 15	      //#define PROBE_PT_3_X 170
-  //#define PROBE_PT_2_Y 20	      //#define PROBE_PT_3_Y 20
-  //#define PROBE_PT_3_X 170	    #endif
-  //#define PROBE_PT_3_Y 20	    
-#endif				    /**
-				     * Add a bed leveling sub-menu for
-/**				     * Include a guided procedure if ma
- * Add a bed leveling sub-menu for   */
- * Include a guided procedure if ma //#define LCD_BED_LEVELING
- */				    
-//#define LCD_BED_LEVELING	    #if ENABLED(LCD_BED_LEVELING)
-				      #define MBL_Z_STEP 0.025	  // St
-#if ENABLED(LCD_BED_LEVELING)	      #define LCD_PROBE_Z_RANGE 4 // Z
-  #define MBL_Z_STEP 0.025    // St #endif
-  #define LCD_PROBE_Z_RANGE 4 // Z  
-#endif				    // Add a menu item to move between
-				    //#define LEVEL_BED_CORNERS
-// Add a menu item to move between  
-//#define LEVEL_BED_CORNERS	    #if ENABLED(LEVEL_BED_CORNERS)
-				      #define LEVEL_CORNERS_INSET 30
-#if ENABLED(LEVEL_BED_CORNERS)	      #define LEVEL_CORNERS_Z_HOP  4.0
-  #define LEVEL_CORNERS_INSET 30      //#define LEVEL_CENTER_TOO
-  //#define LEVEL_CENTER_TOO	    #endif
-#endif				    
-				    /**
-/**				     * Commands to execute at the end o
- * Commands to execute at the end o  * Useful to retract or move the Z
- * Useful to retract or move the Z   */
- */				    //#define Z_PROBE_END_SCRIPT "G1 Z1
-//#define Z_PROBE_END_SCRIPT "G1 Z1 
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 21
-
-
-				    
-				    // @section homing
-// @section homing		    
-				    // The center of the bed is at (X=0
-// The center of the bed is at (X=0 //#define BED_CENTER_AT_0_0
-//#define BED_CENTER_AT_0_0	    
-				    // Manually set the home position.
-// Manually set the home position.  // For DELTA this is the top-center
-// For DELTA this is the top-center //#define MANUAL_X_HOME_POS 0
-//#define MANUAL_X_HOME_POS 0	    //#define MANUAL_Y_HOME_POS 0
-//#define MANUAL_Y_HOME_POS 0	    //#define MANUAL_Z_HOME_POS 0
-//#define MANUAL_Z_HOME_POS 0	    
-				    // Use "Z Safe Homing" to avoid hom
-// Use "Z Safe Homing" to avoid hom //
-//				    // With this feature enabled:
-// With this feature enabled:	    //
-//				    // - Allow Z homing only after X an
-// - Allow Z homing only after X an // - If stepper drivers time out, i
-// - If stepper drivers time out, i // - Move the Z probe (or nozzle) t
-// - Move the Z probe (or nozzle) t // - Prevent Z homing when the Z pr
-// - Prevent Z homing when the Z pr //
-//				    //#define Z_SAFE_HOMING
-//#define Z_SAFE_HOMING		    
-				    #if ENABLED(Z_SAFE_HOMING)
-#if ENABLED(Z_SAFE_HOMING)	      #define Z_SAFE_HOMING_X_POINT ((X
-  #define Z_SAFE_HOMING_X_POINT ((X   #define Z_SAFE_HOMING_Y_POINT ((Y
-  #define Z_SAFE_HOMING_Y_POINT ((Y #endif
-#endif				    
-				    // Homing speeds (mm/m)
-// Homing speeds (mm/m)		    #define HOMING_FEEDRATE_XY (50*60)
-#define HOMING_FEEDRATE_XY (80*60)  #define HOMING_FEEDRATE_Z  (4*60)
-#define HOMING_FEEDRATE_Z  (20*60)  
-				    // @section calibrate
-// @section calibrate		    
-				    /**
-/**				     * Bed Skew Compensation
- * Bed Skew Compensation	     *
- *				     * This feature corrects for misali
- * This feature corrects for misali  *
- *				     * Take the following steps to get
- * Take the following steps to get   *	1. Print a test square (e.g., h
- *  1. Print a test square (e.g., h  *	2. For XY_DIAG_AC measure the d
- *  2. For XY_DIAG_AC measure the d  *	3. For XY_DIAG_BD measure the d
- *  3. For XY_DIAG_BD measure the d  *	4. For XY_SIDE_AD measure the e
- *  4. For XY_SIDE_AD measure the e  *
- *				     * Marlin automatically computes sk
- * Marlin automatically computes sk  * Skew factors may also be compute
- * Skew factors may also be compute  *
- *				     *	- Compute AB	 : SQRT(2*AC*AC
- *  - Compute AB     : SQRT(2*AC*AC  *	- XY_SKEW_FACTOR : TAN(PI/2-ACO
- *  - XY_SKEW_FACTOR : TAN(PI/2-ACO  *
- *				     * If desired, follow the same proc
- * If desired, follow the same proc  * Use these diagrams for reference
- * Use these diagrams for reference  *
- *				     *	  Y			Z
- *    Y			    Z	     *	  ^	B-------C	^     B
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 22
-
-
- *    ^	    B-------C	    ^	  B  *	  |    /       /	|    /
- *    |	   /	   /	    |	 /   *	  |   /	      /		|   /
- *    |	  /	  /	    |	/    *	  |  A-------D		|  A---
- *    |	 A-------D	    |  A---  *	  +-------------->X	+------
- *    +-------------->X	    +------  *	   XY_SKEW_FACTOR	 XZ_SKE
- *     XY_SKEW_FACTOR	     XZ_SKE  */
- */				    //#define SKEW_CORRECTION
-//#define SKEW_CORRECTION	    
-				    #if ENABLED(SKEW_CORRECTION)
-#if ENABLED(SKEW_CORRECTION)	      // Input all length measurements
-  // Input all length measurements    #define XY_DIAG_AC 282.8427124746
-  #define XY_DIAG_AC 282.8427124746   #define XY_DIAG_BD 282.8427124746
-  #define XY_DIAG_BD 282.8427124746   #define XY_SIDE_AD 200
-  #define XY_SIDE_AD 200	    
-				      // Or, set the default skew facto
-  // Or, set the default skew facto   // to override the above measurem
-  // to override the above measurem   #define XY_SKEW_FACTOR 0.0
-  #define XY_SKEW_FACTOR 0.0	    
-				      //#define SKEW_CORRECTION_FOR_Z
-  //#define SKEW_CORRECTION_FOR_Z     #if ENABLED(SKEW_CORRECTION_FOR_Z
-  #if ENABLED(SKEW_CORRECTION_FOR_Z 	#define XZ_DIAG_AC 282.84271247
-    #define XZ_DIAG_AC 282.84271247 	#define XZ_DIAG_BD 282.84271247
-    #define XZ_DIAG_BD 282.84271247 	#define YZ_DIAG_AC 282.84271247
-    #define YZ_DIAG_AC 282.84271247 	#define YZ_DIAG_BD 282.84271247
-    #define YZ_DIAG_BD 282.84271247 	#define YZ_SIDE_AD 200
-    #define YZ_SIDE_AD 200	    	#define XZ_SKEW_FACTOR 0.0
-    #define XZ_SKEW_FACTOR 0.0	    	#define YZ_SKEW_FACTOR 0.0
-    #define YZ_SKEW_FACTOR 0.0	      #endif
-  #endif			    
-				      // Enable this option for M852 to
-  // Enable this option for M852 to   //#define SKEW_CORRECTION_GCODE
-  //#define SKEW_CORRECTION_GCODE   #endif
-#endif				    
-				    //=================================
-//================================= //============================= Add
-//============================= Add //=================================
-//================================= 
-				    // @section extras
-// @section extras		    
-				    //
-//				    // EEPROM
-// EEPROM			    //
-//				    // The microcontroller can store se
-// The microcontroller can store se // M500 - stores parameters in EEPR
-// M500 - stores parameters in EEPR // M501 - reads parameters from EEP
-// M501 - reads parameters from EEP // M502 - reverts to the default "f
-// M502 - reverts to the default "f //
-//				    //#define EEPROM_SETTINGS // Enable
-#define EEPROM_SETTINGS // Enable f //#define DISABLE_M503    // Saves
-//#define DISABLE_M503	  // Saves  #define EEPROM_CHITCHAT   // Give f
-#define EEPROM_CHITCHAT	  // Give f 
-				    //
-//				    // Host Keepalive
-// Host Keepalive		    //
-//				    // When enabled Marlin will send a
-// When enabled Marlin will send a  // every couple of seconds when it
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 23
-
-
-// every couple of seconds when it  //
-//				    #define HOST_KEEPALIVE_FEATURE
-#define HOST_KEEPALIVE_FEATURE	    #define DEFAULT_KEEPALIVE_INTERVAL
-#define DEFAULT_KEEPALIVE_INTERVAL  #define BUSY_WHILE_HEATING
-#define BUSY_WHILE_HEATING	    
-				    //
-//				    // M100 Free Memory Watcher
-// M100 Free Memory Watcher	    //
-//				    //#define M100_FREE_MEMORY_WATCHER
-//#define M100_FREE_MEMORY_WATCHER  
-				    //
-//				    // G20/G21 Inch mode support
-// G20/G21 Inch mode support	    //
-//				    //#define INCH_MODE_SUPPORT
-//#define INCH_MODE_SUPPORT	    
-				    //
-//				    // M149 Set temperature units suppo
-// M149 Set temperature units suppo //
-//				    //#define TEMPERATURE_UNITS_SUPPORT
-//#define TEMPERATURE_UNITS_SUPPORT 
-				    // @section temperature
-// @section temperature		    
-				    // Preheat Constants
-// Preheat Constants		    #define PREHEAT_1_TEMP_HOTEND 180
-#define PREHEAT_1_TEMP_HOTEND 180   #define PREHEAT_1_TEMP_BED	   70
-#define PREHEAT_1_TEMP_BED     70   #define PREHEAT_1_FAN_SPEED	    0 /
-#define PREHEAT_1_FAN_SPEED	0 / 
-				    #define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_HOTEND 240   #define PREHEAT_2_TEMP_BED	  110
-#define PREHEAT_2_TEMP_BED    110   #define PREHEAT_2_FAN_SPEED	    0 /
-#define PREHEAT_2_FAN_SPEED	0 / 
-				    /**
-/**				     * Nozzle Park
- * Nozzle Park			     *
- *				     * Park the nozzle at the given XYZ
- * Park the nozzle at the given XYZ  *
- *				     * The "P" parameter controls the a
- * The "P" parameter controls the a  *
- *				     *	  P0  (Default) If Z is below p
- *    P0  (Default) If Z is below p  *	  P1  Raise the nozzle always t
- *    P1  Raise the nozzle always t  *	  P2  Raise the nozzle by Z-par
- *    P2  Raise the nozzle by Z-par  */
- */				    //#define NOZZLE_PARK_FEATURE
-//#define NOZZLE_PARK_FEATURE	    
-				    #if ENABLED(NOZZLE_PARK_FEATURE)
-#if ENABLED(NOZZLE_PARK_FEATURE)      // Specify a park position as { X
-  // Specify a park position as { X   #define NOZZLE_PARK_POINT { (X_MI
-  #define NOZZLE_PARK_POINT { (X_MI   #define NOZZLE_PARK_XY_FEEDRATE 1
-  #define NOZZLE_PARK_XY_FEEDRATE 1   #define NOZZLE_PARK_Z_FEEDRATE 5
-  #define NOZZLE_PARK_Z_FEEDRATE 5  #endif
-#endif				    
-				    /**
-/**				     * Clean Nozzle Feature -- EXPERIME
- * Clean Nozzle Feature -- EXPERIME  *
- *				     * Adds the G12 command to perform
- * Adds the G12 command to perform   *
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 24
-
-
- *				     * Parameters:
- * Parameters:			     *	 P  Pattern
- *   P	Pattern			     *	 S  Strokes / Repetitions
- *   S	Strokes / Repetitions	     *	 T  Triangles (P1 only)
- *   T	Triangles (P1 only)	     *
- *				     * Patterns:
- * Patterns:			     *	 P0  Straight line (default). T
- *   P0	 Straight line (default). T  *	     at a fixed bed location. "
- *	 at a fixed bed location. "  *	     between the start / end po
- *	 between the start / end po  *
- *				     *	 P1  Zig-zag pattern between (X
- *   P1	 Zig-zag pattern between (X  *	     number of zig-zag triangle
- *	 number of zig-zag triangle  *	     Zig-zags are done in which
- *	 Zig-zags are done in which  *	     For example, "G12 P1 S1 T3
- *	 For example, "G12 P1 S1 T3  *
- *				     *		--
- *	    --			     *	       |  (X0, Y1) |	 /\
- *	   |  (X0, Y1) |     /\	     *	       |	   |	/  \
- *	   |	       |    /  \     *	     A |	   |   /    \
- *	 A |	       |   /	\    *	       |	   |  /	     \
- *	   |	       |  /	 \   *	       |  (X0, Y0) | /	      \
- *	   |  (X0, Y0) | /	  \  *		--	   +-----------
- *	    --	       +-----------  *			     |________|
- *			 |________|  *				 T1
- *			     T1	     *
- *				     *	 P2  Circular pattern with midd
- *   P2	 Circular pattern with midd  *	     "R" specifies the radius.
- *	 "R" specifies the radius.   *	     Before starting, the nozzl
- *	 Before starting, the nozzl  *
- *				     *	 Caveats: The ending Z should b
- *   Caveats: The ending Z should b  * Attention: EXPERIMENTAL. G-code
- * Attention: EXPERIMENTAL. G-code   *
- *				     */
- */				    //#define NOZZLE_CLEAN_FEATURE
-//#define NOZZLE_CLEAN_FEATURE	    
-				    #if ENABLED(NOZZLE_CLEAN_FEATURE)
-#if ENABLED(NOZZLE_CLEAN_FEATURE)     // Default number of pattern repe
-  // Default number of pattern repe   #define NOZZLE_CLEAN_STROKES  12
-  #define NOZZLE_CLEAN_STROKES	12  
-				      // Default number of triangles
-  // Default number of triangles      #define NOZZLE_CLEAN_TRIANGLES  3
-  #define NOZZLE_CLEAN_TRIANGLES  3 
-				      // Specify positions as { X, Y, Z
-  // Specify positions as { X, Y, Z   #define NOZZLE_CLEAN_START_POINT
-  #define NOZZLE_CLEAN_START_POINT    #define NOZZLE_CLEAN_END_POINT
-  #define NOZZLE_CLEAN_END_POINT    
-				      // Circular pattern radius
-  // Circular pattern radius	      #define NOZZLE_CLEAN_CIRCLE_RADIU
-  #define NOZZLE_CLEAN_CIRCLE_RADIU   // Circular pattern circle fragme
-  // Circular pattern circle fragme   #define NOZZLE_CLEAN_CIRCLE_FN 10
-  #define NOZZLE_CLEAN_CIRCLE_FN 10   // Middle point of circle
-  // Middle point of circle	      #define NOZZLE_CLEAN_CIRCLE_MIDDL
-  #define NOZZLE_CLEAN_CIRCLE_MIDDL 
-				      // Moves the nozzle to the initia
-  // Moves the nozzle to the initia   #define NOZZLE_CLEAN_GOBACK
-  #define NOZZLE_CLEAN_GOBACK	    #endif
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 25
-
-
-#endif				    
-				    /**
-/**				     * Print Job Timer
- * Print Job Timer		     *
- *				     * Automatically start and stop the
- * Automatically start and stop the  *
- *				     *	 M104 (hotend, no wait) - high
- *   M104 (hotend, no wait) - high   *	 M109 (hotend, wait)	- high
- *   M109 (hotend, wait)    - high   *	 M190 (bed, wait)	- high
- *   M190 (bed, wait)	    - high   *
- *				     * The timer can also be controlled
- * The timer can also be controlled  *
- *				     *	 M75 - Start the print job time
- *   M75 - Start the print job time  *	 M76 - Pause the print job time
- *   M76 - Pause the print job time  *	 M77 - Stop the print job timer
- *   M77 - Stop the print job timer  */
- */				    #define PRINTJOB_TIMER_AUTOSTART
-#define PRINTJOB_TIMER_AUTOSTART    
-				    /**
-/**				     * Print Counter
- * Print Counter		     *
- *				     * Track statistical data such as:
- * Track statistical data such as:   *
- *				     *	- Total print jobs
- *  - Total print jobs		     *	- Total successful print jobs
- *  - Total successful print jobs    *	- Total failed print jobs
- *  - Total failed print jobs	     *	- Total time printing
- *  - Total time printing	     *
- *				     * View the current statistics with
- * View the current statistics with  */
- */				    //#define PRINTCOUNTER
-//#define PRINTCOUNTER		    
-				    //=================================
-//================================= //============================= LCD
-//============================= LCD //=================================
-//================================= 
-				    // @section lcd
-// @section lcd			    
-				    /**
-/**				     * LCD LANGUAGE
- * LCD LANGUAGE			     *
- *				     * Select the language to display o
- * Select the language to display o  *
- *				     *	  en, an, bg, ca, cn, cz, cz_ut
- *    en, an, bg, ca, cn, cz, cz_ut  *	  fi, fr, fr_utf8, gl, hr, it,
- *    eu, fi, fr, fr_utf8, gl, hr,   *	  pt_utf8, pt-br, pt-br_utf8, r
- *    pt_utf8, pt-br, pt-br_utf8, r  *
- *				     * :{ 'en':'English', 'an':'Aragone
- * :{ 'en':'English', 'an':'Aragone  */
- */				    #define LCD_LANGUAGE en
-#define LCD_LANGUAGE en		    
-				    /**
-/**				     * LCD Character Set
- * LCD Character Set		     *
- *				     * Note: This option is NOT applica
- * Note: This option is NOT applica  *
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 26
-
-
- *				     * All character-based LCDs provide
- * All character-based LCDs provide  * language extensions:
- * language extensions:		     *
- *				     *	- JAPANESE ... the most common
- *  - JAPANESE ... the most common   *	- WESTERN  ... with more accent
- *  - WESTERN  ... with more accent  *	- CYRILLIC ... for the Russian
- *  - CYRILLIC ... for the Russian   *
- *				     * To determine the language extens
- * To determine the language extens  *
- *				     *	- Compile and upload with LCD_L
- *  - Compile and upload with LCD_L  *	- Click the controller to view
- *  - Click the controller to view   *	- The LCD will display Japanese
- *  - The LCD will display Japanese  *
- *				     * See http://marlinfw.org/docs/dev
- * See http://marlinfw.org/docs/dev  *
- *				     * :['JAPANESE', 'WESTERN', 'CYRILL
- * :['JAPANESE', 'WESTERN', 'CYRILL  */
- */				    #define DISPLAY_CHARSET_HD44780 JAP
-#define DISPLAY_CHARSET_HD44780 JAP 
-				    /**
-/**				     * SD CARD
- * SD CARD			     *
- *				     * SD Card support is disabled by d
- * SD Card support is disabled by d  * you must uncomment the following
- * you must uncomment the following  *
- *				     */
- */				    //#define SDSUPPORT
-//#define SDSUPPORT		    
-				    /**
-/**				     * SD CARD: SPI SPEED
- * SD CARD: SPI SPEED		     *
- *				     * Enable one of the following item
- * Enable one of the following item  * This may be required to resolve
- * This may be required to resolve   */
- */				    //#define SPI_SPEED SPI_HALF_SPEED
-//#define SPI_SPEED SPI_HALF_SPEED  //#define SPI_SPEED SPI_QUARTER_SPE
-//#define SPI_SPEED SPI_QUARTER_SPE //#define SPI_SPEED SPI_EIGHTH_SPEE
-//#define SPI_SPEED SPI_EIGHTH_SPEE 
-				    /**
-/**				     * SD CARD: ENABLE CRC
- * SD CARD: ENABLE CRC		     *
- *				     * Use CRC checks and retries on th
- * Use CRC checks and retries on th  */
- */				    //#define SD_CHECK_AND_RETRY
-//#define SD_CHECK_AND_RETRY	    
-				    /**
-/**				     * LCD Menu Items
- * LCD Menu Items		     *
- *				     * Disable all menus and only displ
- * Disable all menus and only displ  * just remove some extraneous menu
- * just remove some extraneous menu  */
- */				    //#define NO_LCD_MENUS
-//#define NO_LCD_MENUS		    //#define SLIM_LCD_MENUS
-//#define SLIM_LCD_MENUS	    
-				    //
-//				    // ENCODER SETTINGS
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 27
-
-
-// ENCODER SETTINGS		    //
-//				    // This option overrides the defaul
-// This option overrides the defaul // produce one step. Should be incr
-// produce one step. Should be incr //
-//				    //#define ENCODER_PULSES_PER_STEP 4
-//#define ENCODER_PULSES_PER_STEP 4 
-				    //
-//				    // Use this option to override the
-// Use this option to override the  // move between next/prev menu item
-// move between next/prev menu item //
-//				    //#define ENCODER_STEPS_PER_MENU_IT
-//#define ENCODER_STEPS_PER_MENU_IT 
-				    /**
-/**				     * Encoder Direction Options
- * Encoder Direction Options	     *
- *				     * Test your encoder's behavior fir
- * Test your encoder's behavior fir  *
- *				     *	Reversed Value Edit and Menu Na
- *  Reversed Value Edit and Menu Na  *	Reversed Menu Navigation only?
- *  Reversed Menu Navigation only?   *	Reversed Value Editing only?
- *  Reversed Value Editing only?     */
- */				    
-				    //
-//				    // This option reverses the encoder
-// This option reverses the encoder //
-//				    //	Set this option if CLOCKWISE ca
-//  Set this option if CLOCKWISE ca //
-//				    //#define REVERSE_ENCODER_DIRECTION
-//#define REVERSE_ENCODER_DIRECTION 
-				    //
-//				    // This option reverses the encoder
-// This option reverses the encoder //
-//				    //	If CLOCKWISE normally moves DOW
-//  If CLOCKWISE normally moves DOW //	If CLOCKWISE normally moves UP
-//  If CLOCKWISE normally moves UP  //
-//				    //#define REVERSE_MENU_DIRECTION
-//#define REVERSE_MENU_DIRECTION    
-				    //
-//				    // Individual Axis Homing
-// Individual Axis Homing	    //
-//				    // Add individual axis homing items
-// Add individual axis homing items //
-//				    //#define INDIVIDUAL_AXIS_HOMING_ME
-//#define INDIVIDUAL_AXIS_HOMING_ME 
-				    //
-//				    // SPEAKER/BUZZER
-// SPEAKER/BUZZER		    //
-//				    // If you have a speaker that can p
-// If you have a speaker that can p // By default Marlin assumes you ha
-// By default Marlin assumes you ha //
-//				    //#define SPEAKER
-//#define SPEAKER		    
-				    //
-//				    // The duration and frequency for t
-// The duration and frequency for t // Set these to 0 to disable audio
-// Set these to 0 to disable audio  //
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 28
-
-
-//				    // Note: Test audio output with the
-// Note: Test audio output with the //	M300 S<frequency Hz> P<duration
-//  M300 S<frequency Hz> P<duration //
-//				    //#define LCD_FEEDBACK_FREQUENCY_DU
-//#define LCD_FEEDBACK_FREQUENCY_DU //#define LCD_FEEDBACK_FREQUENCY_HZ
-//#define LCD_FEEDBACK_FREQUENCY_HZ 
-				    //=================================
-//================================= //======================== LCD / Co
-//======================== LCD / Co //========================	 (Chara
-//========================   (Chara //=================================
-//================================= 
-				    //
-//				    // RepRapDiscount Smart Controller.
-// RepRapDiscount Smart Controller. // http://reprap.org/wiki/RepRapDis
-// http://reprap.org/wiki/RepRapDis //
-//				    // Note: Usually sold with a white
-// Note: Usually sold with a white  //
-//				    //#define REPRAP_DISCOUNT_SMART_CON
-//#define REPRAP_DISCOUNT_SMART_CON 
-				    //
-//				    // ULTIMAKER Controller.
-// ULTIMAKER Controller.	    //
-//				    //#define ULTIMAKERCONTROLLER
-//#define ULTIMAKERCONTROLLER	    
-				    //
-//				    // ULTIPANEL as seen on Thingiverse
-// ULTIPANEL as seen on Thingiverse //
-//				    //#define ULTIPANEL
-//#define ULTIPANEL		    
-				    //
-//				    // PanelOne from T3P3 (via RAMPS 1.
-// PanelOne from T3P3 (via RAMPS 1. // http://reprap.org/wiki/PanelOne
-// http://reprap.org/wiki/PanelOne  //
-//				    //#define PANEL_ONE
-//#define PANEL_ONE		    
-				    //
-//				    // GADGETS3D G3D LCD/SD Controller
-// GADGETS3D G3D LCD/SD Controller  // http://reprap.org/wiki/RAMPS_1.3
-// http://reprap.org/wiki/RAMPS_1.3 //
-//				    // Note: Usually sold with a blue P
-// Note: Usually sold with a blue P //
-//				    //#define G3D_PANEL
-//#define G3D_PANEL		    
-				    //
-//				    // RigidBot Panel V1.0
-// RigidBot Panel V1.0		    // http://www.inventapart.com/
-// http://www.inventapart.com/	    //
-//				    //#define RIGIDBOT_PANEL
-//#define RIGIDBOT_PANEL	    
-				    //
-//				    // Makeboard 3D Printer Parts 3D Pr
-// Makeboard 3D Printer Parts 3D Pr // https://www.aliexpress.com/item/
-// https://www.aliexpress.com/item/ //
-//				    //#define MAKEBOARD_MINI_2_LINE_DIS
-//#define MAKEBOARD_MINI_2_LINE_DIS 
-				    //
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 29
-
-
-//				    // ANET and Tronxy 20x4 Controller
-// ANET and Tronxy 20x4 Controller  //
-//				    //#define ZONESTAR_LCD	      /
-//#define ZONESTAR_LCD		  / 				      /
-				  / 				      /
-				  / 				      /
-				  / 
-				    //
-//				    // Generic 16x2, 16x4, 20x2, or 20x
-// Generic 16x2, 16x4, 20x2, or 20x //
-//				    //#define ULTRA_LCD
-//#define ULTRA_LCD		    
-				    //=================================
-//================================= //======================== LCD / Co
-//======================== LCD / Co //=====================   (I2C and
-//=====================	  (I2C and  //=================================
-//================================= 
-				    //
-//				    // CONTROLLER TYPE: I2C
-// CONTROLLER TYPE: I2C		    //
-//				    // Note: These controllers require
-// Note: These controllers require  // library. For more info: https://
-// library. For more info: https:// //
-//				    
-				    //
-//				    // Elefu RA Board Control Panel
-// Elefu RA Board Control Panel	    // http://www.elefu.com/index.php?r
-// http://www.elefu.com/index.php?r //
-//				    //#define RA_CONTROL_PANEL
-//#define RA_CONTROL_PANEL	    
-				    //
-//				    // Sainsmart (YwRobot) LCD Displays
-// Sainsmart (YwRobot) LCD Displays //
-//				    // These require F.Malpartida's Liq
-// These require F.Malpartida's Liq // https://bitbucket.org/fmalpartid
-// https://bitbucket.org/fmalpartid //
-//				    //#define LCD_SAINSMART_I2C_1602
-//#define LCD_SAINSMART_I2C_1602    //#define LCD_SAINSMART_I2C_2004
-//#define LCD_SAINSMART_I2C_2004    
-				    //
-//				    // Generic LCM1602 LCD adapter
-// Generic LCM1602 LCD adapter	    //
-//				    //#define LCM1602
-//#define LCM1602		    
-				    //
-//				    // PANELOLU2 LCD with status LEDs,
-// PANELOLU2 LCD with status LEDs,  // separate encoder and click input
-// separate encoder and click input //
-//				    // Note: This controller requires A
-// Note: This controller requires A // For more info: https://github.co
-// For more info: https://github.co //
-//				    // Note: The PANELOLU2 encoder clic
-// Note: The PANELOLU2 encoder clic // a pin (if BTN_ENC defined to !=
-// a pin (if BTN_ENC defined to !=  //
-//				    //#define LCD_I2C_PANELOLU2
-//#define LCD_I2C_PANELOLU2	    
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 30
-
-
-				    //
-//				    // Panucatt VIKI LCD with status LE
-// Panucatt VIKI LCD with status LE // integrated click & L/R/U/D butto
-// integrated click & L/R/U/D butto //
-//				    //#define LCD_I2C_VIKI
-//#define LCD_I2C_VIKI		    
-				    //
-//				    // CONTROLLER TYPE: Shift register
-// CONTROLLER TYPE: Shift register  //
-//				    
-				    //
-//				    // 2 wire Non-latching LCD SR from
-// 2 wire Non-latching LCD SR from  // LCD configuration: http://reprap
-// LCD configuration: http://reprap //
-//				    //#define SAV_3DLCD
-//#define SAV_3DLCD		    
-				    //=================================
-//================================= //=======================	LCD / C
-//=======================   LCD / C //=========================	     (G
-//=========================	 (G //=================================
-//================================= 
-				    //
-//				    // CONTROLLER TYPE: Graphical 128x6
-// CONTROLLER TYPE: Graphical 128x6 //
-//				    // IMPORTANT: The U8glib library is
-// IMPORTANT: The U8glib library is //		  https://github.com/ol
-//	      https://github.com/ol //
-//				    
-				    //
-//				    // RepRapDiscount FULL GRAPHIC Smar
-// RepRapDiscount FULL GRAPHIC Smar // http://reprap.org/wiki/RepRapDis
-// http://reprap.org/wiki/RepRapDis //
-//				    //#define REPRAP_DISCOUNT_FULL_GRAP
-//#define REPRAP_DISCOUNT_FULL_GRAP 
-				    //
-//				    // ReprapWorld Graphical LCD
-// ReprapWorld Graphical LCD	    // https://reprapworld.com/?product
-// https://reprapworld.com/?product //
-//				    //#define REPRAPWORLD_GRAPHICAL_LCD
-//#define REPRAPWORLD_GRAPHICAL_LCD 
-				    //
-//				    // Activate one of these if you hav
-// Activate one of these if you hav // Viki 2.0 or mini Viki with Graph
-// Viki 2.0 or mini Viki with Graph // http://panucatt.com
-// http://panucatt.com		    //
-//				    //#define VIKI2
-//#define VIKI2			    //#define miniVIKI
-//#define miniVIKI		    
-				    //
-//				    // MakerLab Mini Panel with graphic
-// MakerLab Mini Panel with graphic // controller and SD support - http
-// controller and SD support - http //
-//				    //#define MINIPANEL
-//#define MINIPANEL		    
-				    //
-//				    // MaKr3d Makr-Panel with graphic c
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 31
-
-
-// MaKr3d Makr-Panel with graphic c // http://reprap.org/wiki/MaKr3d_Ma
-// http://reprap.org/wiki/MaKr3d_Ma //
-//				    //#define MAKRPANEL
-//#define MAKRPANEL		    
-				    //
-//				    // Adafruit ST7565 Full Graphic Con
-// Adafruit ST7565 Full Graphic Con // https://github.com/eboston/Adafr
-// https://github.com/eboston/Adafr //
-//				    //#define ELB_FULL_GRAPHIC_CONTROLL
-//#define ELB_FULL_GRAPHIC_CONTROLL 
-				    //
-//				    // BQ LCD Smart Controller shipped
-// BQ LCD Smart Controller shipped  // default with the BQ Hephestos 2
-// default with the BQ Hephestos 2  //
-//				    //#define BQ_LCD_SMART_CONTROLLER
-//#define BQ_LCD_SMART_CONTROLLER   
-				    //
-//				    // Cartesio UI
-// Cartesio UI			    // http://mauk.cc/webshop/cartesio-
-// http://mauk.cc/webshop/cartesio- //
-//				    //#define CARTESIO_UI
-//#define CARTESIO_UI		    
-				    //
-//				    // LCD for Melzi Card with Graphica
-// LCD for Melzi Card with Graphica //
-//				    //#define LCD_FOR_MELZI
-//#define LCD_FOR_MELZI		    
-				    //
-//				    // SSD1306 OLED full graphics gener
-// SSD1306 OLED full graphics gener //
-//				    //#define U8GLIB_SSD1306
-//#define U8GLIB_SSD1306	    
-				    //
-//				    // SAV OLEd LCD module support usin
-// SAV OLEd LCD module support usin //
-//				    //#define SAV_3DGLCD
-//#define SAV_3DGLCD		    #if ENABLED(SAV_3DGLCD)
-#if ENABLED(SAV_3DGLCD)		      //#define U8GLIB_SSD1306
-  //#define U8GLIB_SSD1306	      #define U8GLIB_SH1106
-  #define U8GLIB_SH1106		    #endif
-#endif				    
-				    //
-//				    // Original Ulticontroller from Ult
-// Original Ulticontroller from Ult // https://github.com/Ultimaker/Ult
-// https://github.com/Ultimaker/Ult //
-//				    //#define ULTI_CONTROLLER
-//#define ULTI_CONTROLLER	    
-				    //
-//				    // TinyBoy2 128x64 OLED / Encoder P
-// TinyBoy2 128x64 OLED / Encoder P //
-//				    //#define OLED_PANEL_TINYBOY2
-//#define OLED_PANEL_TINYBOY2	    
-				    //
-//				    // MKS MINI12864 with graphic contr
-// MKS MINI12864 with graphic contr // http://reprap.org/wiki/MKS_MINI_
-// http://reprap.org/wiki/MKS_MINI_ //
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 32
-
-
-//				    //#define MKS_MINI_12864
-//#define MKS_MINI_12864	    
-				    //
-//				    // Factory display for Creality CR-
-// Factory display for Creality CR- // https://www.aliexpress.com/item/
-// https://www.aliexpress.com/item/ //
-//				    // This is RAMPS-compatible using a
-// This is RAMPS-compatible using a // (For CR-10 owners who want to re
-// (For CR-10 owners who want to re //
-//				    //#define CR10_STOCKDISPLAY
-//#define CR10_STOCKDISPLAY	    
-				    //
-//				    // ANET and Tronxy Graphical Contro
-// ANET and Tronxy Graphical Contro //
-//				    //#define ANET_FULL_GRAPHICS_LCD  /
-//#define ANET_FULL_GRAPHICS_LCD  / 				      /
-				  / 				      /
-				  / 
-				    //
-//				    // MKS OLED 1.3" 128 × 64 FULL GRAPH
-// MKS OLED 1.3" 128 × 64 FULL GRAPH // http://reprap.org/wiki/MKS_12864
-// http://reprap.org/wiki/MKS_12864 //
-//				    // Tiny, but very sharp OLED displa
-// Tiny, but very sharp OLED displa //
-//				    //#define MKS_12864OLED	     //
-//#define MKS_12864OLED		 // //#define MKS_12864OLED_SSD1306  //
-//#define MKS_12864OLED_SSD1306	 // 
-				    //
-//				    // Silvergate GLCD controller
-// Silvergate GLCD controller	    // http://github.com/android444/Sil
-// http://github.com/android444/Sil //
-//				    //#define SILVER_GATE_GLCD_CONTROLL
-//#define SILVER_GATE_GLCD_CONTROLL 
-				    //=================================
-//================================= //============================  Oth
-//============================	Oth //=================================
-//================================= 
-				    //
-//				    // CONTROLLER TYPE: Standalone / Se
-// CONTROLLER TYPE: Standalone / Se //
-//				    
-				    //
-//				    // LCD for Malyan M200 printers.
-// LCD for Malyan M200 printers.    // This requires SDSUPPORT to be en
-// This requires SDSUPPORT to be en //
-//				    //#define MALYAN_LCD
-//#define MALYAN_LCD		    
-				    //
-//				    // CONTROLLER TYPE: Keypad / Add-on
-// CONTROLLER TYPE: Keypad / Add-on //
-//				    
-				    //
-//				    // RepRapWorld REPRAPWORLD_KEYPAD v
-// RepRapWorld REPRAPWORLD_KEYPAD v // http://reprapworld.com/?products
-// http://reprapworld.com/?products //
-//				    // REPRAPWORLD_KEYPAD_MOVE_STEP set
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 33
-
-
-// REPRAPWORLD_KEYPAD_MOVE_STEP set // is pressed, a value of 10.0 mean
-// is pressed, a value of 10.0 mean //
-//				    //#define REPRAPWORLD_KEYPAD
-//#define REPRAPWORLD_KEYPAD	    //#define REPRAPWORLD_KEYPAD_MOVE_S
-//#define REPRAPWORLD_KEYPAD_MOVE_S 
-				    //=================================
-//================================= //=============================== E
-//=============================== E //=================================
-//================================= 
-				    // @section extras
-// @section extras		    
-				    // Increase the FAN PWM frequency.
-// Increase the FAN PWM frequency.  //#define FAST_PWM_FAN
-//#define FAST_PWM_FAN		    
-				    // Use software PWM to drive the fa
-// Use software PWM to drive the fa // which is not as annoying as with
-// which is not as annoying as with // is too low, you should also incr
-// is too low, you should also incr //#define FAN_SOFT_PWM
-//#define FAN_SOFT_PWM		    
-				    // Incrementing this by 1 will doub
-// Incrementing this by 1 will doub // affecting heaters, and the fan i
-// affecting heaters, and the fan i // However, control resolution will
-// However, control resolution will // at zero value, there are 128 eff
-// at zero value, there are 128 eff #define SOFT_PWM_SCALE 0
-#define SOFT_PWM_SCALE 0	    
-				    // If SOFT_PWM_SCALE is set to a va
-// If SOFT_PWM_SCALE is set to a va // be used to mitigate the associat
-// be used to mitigate the associat // some of the PWM cycles are stret
-// some of the PWM cycles are stret // duty cycle is attained.
-// duty cycle is attained.	    //#define SOFT_PWM_DITHER
-//#define SOFT_PWM_DITHER	    
-				    // Temperature status LEDs that dis
-// Temperature status LEDs that dis // If all hotends, bed temperature,
-// If all hotends, bed temperature, // then the BLUE led is on. Otherwi
-// then the BLUE led is on. Otherwi //#define TEMP_STAT_LEDS
-//#define TEMP_STAT_LEDS	    
-				    // M240  Triggers a camera by emula
-// M240	 Triggers a camera by emula // Data from: http://www.doc-diy.ne
-// Data from: http://www.doc-diy.ne //#define PHOTOGRAPH_PIN	 23
-//#define PHOTOGRAPH_PIN     23	    
-				    // SkeinForge sends the wrong arc g
-// SkeinForge sends the wrong arc g //#define SF_ARC_FIX
-//#define SF_ARC_FIX		    
-				    // Support for the BariCUDA Paste E
-// Support for the BariCUDA Paste E //#define BARICUDA
-//#define BARICUDA		    
-				    // Support for BlinkM/CyzRgb
-// Support for BlinkM/CyzRgb	    //#define BLINKM
-//#define BLINKM		    
-				    // Support for PCA9632 PWM LED driv
-// Support for PCA9632 PWM LED driv //#define PCA9632
-//#define PCA9632		    
-				    /**
-/**				     * RGB LED / LED Strip Control
- * RGB LED / LED Strip Control	     *
- *				     * Enable support for an RGB LED co
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 34
-
-
- * Enable support for an RGB LED co  * an RGB Strip connected to MOSFET
- * an RGB Strip connected to MOSFET  *
- *				     * Adds the M150 command to set the
- * Adds the M150 command to set the  * If pins are PWM capable (e.g., 4
- * If pins are PWM capable (e.g., 4  * luminance values can be set from
- * luminance values can be set from  * For Neopixel LED an overall brig
- * For Neopixel LED an overall brig  *
- *				     * *** CAUTION ***
- * *** CAUTION ***		     *	LED Strips require a MOSFET Chi
- *  LED Strips require a MOSFET Chi  *	as the Arduino cannot handle th
- *  as the Arduino cannot handle th  *	Failure to follow this precauti
- *  Failure to follow this precauti  *	NOTE: A separate 5V power suppl
- *  NOTE: A separate 5V power suppl  *	more current than the Arduino 5
- *  more current than the Arduino 5  * *** CAUTION ***
- * *** CAUTION ***		     *
- *				     * LED Type. Enable only one of the
- * LED Type. Enable only one of the  *
- *				     */
- */				    //#define RGB_LED
-#define RGB_LED			    //#define RGBW_LED
-//#define RGBW_LED		    
-				    #if ENABLED(RGB_LED) || ENABLED(RGB
-#if ENABLED(RGB_LED) || ENABLED(RGB   #define RGB_LED_R_PIN 34
-  #define RGB_LED_R_PIN 5	      #define RGB_LED_G_PIN 43
-  #define RGB_LED_G_PIN 4	      #define RGB_LED_B_PIN 35
-  #define RGB_LED_B_PIN 6	      #define RGB_LED_W_PIN -1
-  #define RGB_LED_W_PIN -1	    #endif
-#endif				    
-				    // Support for Adafruit Neopixel LE
-// Support for Adafruit Neopixel LE //#define NEOPIXEL_LED
-//#define NEOPIXEL_LED		    #if ENABLED(NEOPIXEL_LED)
-#if ENABLED(NEOPIXEL_LED)	      #define NEOPIXEL_TYPE   NEO_GRBW
-  #define NEOPIXEL_TYPE	  NEO_GRBW    #define NEOPIXEL_PIN    4
-  #define NEOPIXEL_PIN	  4	      #define NEOPIXEL_PIXELS 30
-  #define NEOPIXEL_PIXELS 30	      #define NEOPIXEL_IS_SEQUENTIAL
-  #define NEOPIXEL_IS_SEQUENTIAL      #define NEOPIXEL_BRIGHTNESS 127
-  #define NEOPIXEL_BRIGHTNESS 127     //#define NEOPIXEL_STARTUP_TEST
-  //#define NEOPIXEL_STARTUP_TEST   #endif
-#endif				    
-				    /**
-/**				     * Printer Event LEDs
- * Printer Event LEDs		     *
- *				     * During printing, the LEDs will r
- * During printing, the LEDs will r  *
- *				     *	- Gradually change from blue to
- *  - Gradually change from blue to  *	- Gradually change from violet
- *  - Gradually change from violet   *	- Change to white to illuminate
- *  - Change to white to illuminate  *	- Change to green once print ha
- *  - Change to green once print ha  *	- Turn off after the print has
- *  - Turn off after the print has   */
- */				    #if ENABLED(BLINKM) || ENABLED(RGB_
-#if ENABLED(BLINKM) || ENABLED(RGB_   #define PRINTER_EVENT_LEDS
-  #define PRINTER_EVENT_LEDS	    #endif
-#endif				    
-				    /**
-/**				     * R/C SERVO support
-
-
-
-
-
-
-
-2024-04-01 23:07                                                 Page 35
-
-
- * R/C SERVO support		     * Sponsored by TrinityLabs, Rework
- * Sponsored by TrinityLabs, Rework  */
- */				    
-				    /**
-/**				     * Number of servos
- * Number of servos		     *
- *				     * For some servo-related options N
- * For some servo-related options N  * Set this manually if there are e
- * Set this manually if there are e  * Leave undefined or set to 0 to e
- * Leave undefined or set to 0 to e  */
- */				    //#define NUM_SERVOS 3 // Servo ind
-//#define NUM_SERVOS 3 // Servo ind 
-				    // Delay (in milliseconds) before t
-// Delay (in milliseconds) before t // 300ms is a good value but you ca
-// 300ms is a good value but you ca // If the servo can't reach the req
-// If the servo can't reach the req #define SERVO_DELAY { 300 }
-#define SERVO_DELAY { 300 }	    
-				    // Only power servos during movemen
-// Only power servos during movemen //#define DEACTIVATE_SERVOS_AFTER_M
-//#define DEACTIVATE_SERVOS_AFTER_M 
-				    #endif // CONFIGURATION_H
-#endif // CONFIGURATION_H	    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
